@@ -1,0 +1,87 @@
+@mixin flex( $display, $justify, $align, $direction){
+    display: $display;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $direction;
+}
+@mixin media($medida: 780px){
+    @media only screen and (max-width: $medida){
+        @content
+    }
+}
+
+#footer{
+    height: 220px;
+    background: #121212;
+    #footer-ppal{
+        @include flex(flex, space-between, center, row);
+        height: 210px;
+        margin-left: 70px;
+        margin-right: 70px;
+        .footer-text{
+            @include flex(flex, space-between, center, row);
+            .footer-logo{
+                img{
+                    width: 90px;
+                }
+                p{
+                    color: #EEF1EF;
+                    padding-right: 1rem;
+                }
+            }
+            .footer-buttons{
+                @include flex(flex, space-around, center, row);
+                width: 400px;
+                p{
+                    a{
+                        text-decoration: none;
+                        color: #EEF1EF;
+                        font-size: 15px;
+                    }
+                }
+            }
+            .footer-brands{
+                @include flex(flex, space-around, center, row);
+                width: 100px;
+                a{
+                    text-decoration: none;                 
+                    i{
+                        color: #EEF1EF;
+                        font-size: 18px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+// @media only screen and (max-width: 780px) 
+//     #footer-ppal
+//         flex-direction: column
+//         justify-content: center
+//         align-items: center
+//         .footer-text
+//             display: flex
+//             flex-wrap: wrap
+//             justify-content: center
+//             align-items: center
+//             width: 100%
+//             .footer-buttons 
+//                 display: flex
+//                 flex-wrap: wrap
+//                 justify-content: center
+//                 margin: 5px
+//                 width: 100%
+//             .footer-logo
+//                 display: flex
+//                 justify-content: center
+//                 align-items: center
+//                 width: 100%
+//                 margin: 15px 0
+//             .footer-brands
+//                 display: flex
+//                 justify-content: center
+//                 align-items: center
+//                 width: 100%
+                
