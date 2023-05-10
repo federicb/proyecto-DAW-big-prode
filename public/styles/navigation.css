@@ -7,7 +7,7 @@
   background-image: url("/images/navbar.jpg");
   background-position: center;
   background-size: cover;
-  margin: 10px;
+  margin: 13px;
   box-shadow: 4px 4px 10px 2px rgba(0, 0, 0, 0.25), -2px 0px 7px 2px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
   padding: 0 2rem;
@@ -28,7 +28,7 @@
 }
 #nav .check-btn {
   font-size: 30px;
-  color: #fff;
+  color: #EEF1EF;
   float: right;
   line-height: 80px;
   margin-right: 40px;

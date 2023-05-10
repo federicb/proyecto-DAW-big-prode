@@ -1,0 +1,60 @@
+@mixin flex( $display, $justify, $align, $direction){
+    display: $display;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $direction;
+}
+@mixin media($medida: 780px){
+    @media only screen and (max-width: $medida){
+        @content
+    }
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main{
+    @include flex(flex, center, center, column);
+    .main__title{
+        @include flex(flex, center, center, column);
+        background-image: url('/images/portada.jpg');
+        background-position: center;
+        background-size: cover; 
+        width: 100%;
+        height: 43vh;
+        h1{
+            color: gold;
+            font-size: 50px;
+            margin-top: 7rem;
+            margin-bottom: 2rem;
+        }
+        span{
+            color: #EEF1EF;
+            font-size: 33px;
+        }
+    }
+    .main__info{
+        @include flex(flex, space-around, center, row);
+        width: 100%;
+        margin: 1.5rem 0;
+        .info{
+            @include flex(flex, space-around, center, column);
+            background: #D1EECA;
+            width: 27%;
+            height: 31vh;
+            padding: 2rem;
+            border-radius: 5px;
+            span{
+                font-size: 19px;
+            }
+            p{
+                font-size: 16px;
+            }
+            a{
+                font-size: 15px;
+            }            
+        }
+    }
+}
