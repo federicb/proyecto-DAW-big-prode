@@ -1,0 +1,109 @@
+@mixin flex( $display, $justify, $align, $direction){
+    display: $display;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $direction;
+}
+@mixin media($medida: 780px){
+    @media only screen and (max-width: $medida){
+        @content
+    }
+}
+
+#nav{
+    @include flex(flex, space-between, center, row);
+    height: 7rem;
+    background-image: url('/images/navbar.jpg');
+    background-position: center;
+    background-size: cover; 
+    margin: 10px;
+    box-shadow: 4px 4px 10px 2px rgba(0, 0, 0, 0.25), -2px 0px 7px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    padding: 0 2rem;
+    @include media(){
+        padding: 0;
+    }
+    #link-logo{
+        img{
+            width: 200px;
+            margin-top: 9px;
+            @include media(){
+                width: 100px;
+            }
+        }
+    }
+    .check-btn{
+        font-size: 30px;
+        color: #fff;
+        float: right;
+        line-height: 80px;
+        margin-right: 40px;
+        cursor: pointer;
+        display: none;
+        @include media(){
+            display: block;
+        }
+    }
+    #check{
+        display: none;
+        @include media(){
+            &:checked {
+                ~ ul {
+                    left: 0;
+                    opacity: 1;
+                    flex-direction: column;
+                }
+              }
+        }
+    }
+    .nav__list{
+        @include flex(flex, space-between, center, row);
+        float: right;
+        margin-right: 2rem;
+        @include media(){
+            @include flex(flex, center, center, column);
+            position: absolute;
+            width: 100%;
+            height: 90%;
+            background: #EEF1EF;
+            top: 135px;
+            left: -105%;
+            text-align: center;
+            transition: .5s;
+            box-sizing: border-box;
+            z-index: 5;
+        }
+        li{
+            display: inline-block;
+            margin: 0 1.5rem;
+            @include media(){
+                display: block;
+                margin: 2rem 0;
+                line-height: 9px;
+                display: flex;
+                flex-direction: column;
+                padding: 1rem 0;
+                width: 80%;
+            }
+            .nav__btn{
+                color: #000;
+                font-weight: 600;
+                text-decoration: none;
+                font-size: 20px;
+                background: #5CCF95;
+                padding: .9rem 1.5rem;
+                border-radius: 5px;
+                @include media(){
+                    background: none;
+                    border-radius: 0;
+                    border-bottom: 1px solid #a1a1a1;
+                    font-size: 23px;
+                }
+            }
+            .nav__btn--login{
+                background: #EEF1EF;    
+            }
+        }
+    }
+}
+

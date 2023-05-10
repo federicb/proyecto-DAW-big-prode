@@ -1,0 +1,113 @@
+#nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  height: 7rem;
+  background-image: url("/images/navbar.jpg");
+  background-position: center;
+  background-size: cover;
+  margin: 10px;
+  box-shadow: 4px 4px 10px 2px rgba(0, 0, 0, 0.25), -2px 0px 7px 2px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  padding: 0 2rem;
+}
+@media only screen and (max-width: 780px) {
+  #nav {
+    padding: 0;
+  }
+}
+#nav #link-logo img {
+  width: 200px;
+  margin-top: 9px;
+}
+@media only screen and (max-width: 780px) {
+  #nav #link-logo img {
+    width: 100px;
+  }
+}
+#nav .check-btn {
+  font-size: 30px;
+  color: #fff;
+  float: right;
+  line-height: 80px;
+  margin-right: 40px;
+  cursor: pointer;
+  display: none;
+}
+@media only screen and (max-width: 780px) {
+  #nav .check-btn {
+    display: block;
+  }
+}
+#nav #check {
+  display: none;
+}
+@media only screen and (max-width: 780px) {
+  #nav #check:checked ~ ul {
+    left: 0;
+    opacity: 1;
+    flex-direction: column;
+  }
+}
+#nav .nav__list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  float: right;
+  margin-right: 2rem;
+}
+@media only screen and (max-width: 780px) {
+  #nav .nav__list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    height: 90%;
+    background: #EEF1EF;
+    top: 135px;
+    left: -105%;
+    text-align: center;
+    transition: 0.5s;
+    box-sizing: border-box;
+    z-index: 5;
+  }
+}
+#nav .nav__list li {
+  display: inline-block;
+  margin: 0 1.5rem;
+}
+@media only screen and (max-width: 780px) {
+  #nav .nav__list li {
+    display: block;
+    margin: 2rem 0;
+    line-height: 9px;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0;
+    width: 80%;
+  }
+}
+#nav .nav__list li .nav__btn {
+  color: #000;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 20px;
+  background: #5CCF95;
+  padding: 0.9rem 1.5rem;
+  border-radius: 5px;
+}
+@media only screen and (max-width: 780px) {
+  #nav .nav__list li .nav__btn {
+    background: none;
+    border-radius: 0;
+    border-bottom: 1px solid #a1a1a1;
+    font-size: 23px;
+  }
+}
+#nav .nav__list li .nav__btn--login {
+  background: #EEF1EF;
+}/*# sourceMappingURL=navigation.css.map */
