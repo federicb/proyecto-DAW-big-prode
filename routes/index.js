@@ -14,10 +14,10 @@ router.get('/contact', (req, res) => {
 
 router.post("/contact", (req,res) => {
     console.log(req.body);
-    //desestructuración objeto
-    const {name,email,message} = req.body;
+    // desestructuración objeto
+    const { name, email, message } = req.body;
     //envio de correo
-    conex_mail(name,email,message);
+    conex_mail(name, email, message);
 
     res.redirect("/");
 });

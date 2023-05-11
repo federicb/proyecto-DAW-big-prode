@@ -10,6 +10,10 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+//middleware para manejar datos enviados desde el cliente
+app.use(express.urlencoded({extended:false}))
+app.use(express.json())
+
 //routes
 app.use(require('./routes/index.js'));
 
