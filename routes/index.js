@@ -1,5 +1,7 @@
 const {Router} = require('express');
 
+const {conex_mail} = require ("../config/contact.js");
+
 const router = Router();
 
 router.get('/', (req, res) => {
@@ -10,17 +12,14 @@ router.get('/contact', (req, res) => {
     res.render('contact');
 });
 
-// router.post("/contact_user", (req,res) => {
-//     console.log(req.body);
+router.post("/contact", (req,res) => {
+    console.log(req.body);
+    //desestructuración objeto
+    const {name,email,message} = req.body;
+    //envio de correo
+    conex_mail(name,email,message);
 
-//     //desestructuramos el objeto x comodidad
-//     let {phone,name,email,message} = req.body;
-
-//     //envio de correo
-//     conexion(name,email,phone,message);
-
-
-//     res.redirect("/");
-// });
+    res.redirect("/");
+});
 
 module.exports = router;
