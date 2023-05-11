@@ -13,26 +13,47 @@
 #footer{
     height: 220px;
     background: #121212;
+    @include media(){
+        height: auto;
+        padding: 1rem 0;
+    }
     #footer-ppal{
         @include flex(flex, space-between, center, row);
         height: 210px;
         margin-left: 70px;
         margin-right: 70px;
+        @include media(){
+            @include flex(flex, center, center, column); 
+            height: auto;
+        }
         .footer-text{
             @include flex(flex, space-between, center, row);
-            .footer-logo{
-                img{
-                    width: 90px;
-                }
+            @include media(){
+                @include flex(flex, center, center, row);
+                flex-wrap: wrap;
+                width: 100%;
+            }
+            
+            .footer-reserved{
                 p{
                     color: #EEF1EF;
                     padding-right: 1rem;
                 }
-            }
+            }            
             .footer-buttons{
                 @include flex(flex, space-around, center, row);
                 width: 400px;
+                @include media(){
+                    @include flex(flex, space-between, center, row);
+                    flex-wrap: wrap;
+                    width: 100%;
+                }
                 p{
+                    @include media(){
+                        width: 40%;
+                        padding: 8px;
+                        text-align: center;
+                    }
                     a{
                         text-decoration: none;
                         color: #EEF1EF;
@@ -43,8 +64,12 @@
             .footer-brands{
                 @include flex(flex, space-around, center, row);
                 width: 100px;
+                @include media(){
+                    width: 100%;
+                    padding-top: 2rem ;
+                }
                 a{
-                    text-decoration: none;                 
+                    text-decoration: none;             
                     i{
                         color: #EEF1EF;
                         font-size: 18px;
@@ -52,36 +77,17 @@
                 }
             }
         }
+        .footer-logo{
+            @include media(){
+                @include flex(flex, center, center, row);
+                width: 100%;
+            }
+            img{
+                width: 200px;
+                @include media(){
+                    width: 100px;
+                }
+            }
+        }            
     }
 }
-
-
-// @media only screen and (max-width: 780px) 
-//     #footer-ppal
-//         flex-direction: column
-//         justify-content: center
-//         align-items: center
-//         .footer-text
-//             display: flex
-//             flex-wrap: wrap
-//             justify-content: center
-//             align-items: center
-//             width: 100%
-//             .footer-buttons 
-//                 display: flex
-//                 flex-wrap: wrap
-//                 justify-content: center
-//                 margin: 5px
-//                 width: 100%
-//             .footer-logo
-//                 display: flex
-//                 justify-content: center
-//                 align-items: center
-//                 width: 100%
-//                 margin: 15px 0
-//             .footer-brands
-//                 display: flex
-//                 justify-content: center
-//                 align-items: center
-//                 width: 100%
-                

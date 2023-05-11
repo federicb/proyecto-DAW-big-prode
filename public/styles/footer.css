@@ -2,6 +2,12 @@
   height: 220px;
   background: #121212;
 }
+@media only screen and (max-width: 780px) {
+  #footer {
+    height: auto;
+    padding: 1rem 0;
+  }
+}
 #footer #footer-ppal {
   display: flex;
   justify-content: space-between;
@@ -11,16 +17,32 @@
   margin-left: 70px;
   margin-right: 70px;
 }
+@media only screen and (max-width: 780px) {
+  #footer #footer-ppal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: auto;
+  }
+}
 #footer #footer-ppal .footer-text {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
 }
-#footer #footer-ppal .footer-text .footer-logo img {
-  width: 90px;
+@media only screen and (max-width: 780px) {
+  #footer #footer-ppal .footer-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+  }
 }
-#footer #footer-ppal .footer-text .footer-logo p {
+#footer #footer-ppal .footer-text .footer-reserved p {
   color: #EEF1EF;
   padding-right: 1rem;
 }
@@ -30,6 +52,23 @@
   align-items: center;
   flex-direction: row;
   width: 400px;
+}
+@media only screen and (max-width: 780px) {
+  #footer #footer-ppal .footer-text .footer-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 780px) {
+  #footer #footer-ppal .footer-text .footer-buttons p {
+    width: 40%;
+    padding: 8px;
+    text-align: center;
+  }
 }
 #footer #footer-ppal .footer-text .footer-buttons p a {
   text-decoration: none;
@@ -43,10 +82,33 @@
   flex-direction: row;
   width: 100px;
 }
+@media only screen and (max-width: 780px) {
+  #footer #footer-ppal .footer-text .footer-brands {
+    width: 100%;
+    padding-top: 2rem;
+  }
+}
 #footer #footer-ppal .footer-text .footer-brands a {
   text-decoration: none;
 }
 #footer #footer-ppal .footer-text .footer-brands a i {
   color: #EEF1EF;
   font-size: 18px;
+}
+@media only screen and (max-width: 780px) {
+  #footer #footer-ppal .footer-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+  }
+}
+#footer #footer-ppal .footer-logo img {
+  width: 200px;
+}
+@media only screen and (max-width: 780px) {
+  #footer #footer-ppal .footer-logo img {
+    width: 100px;
+  }
 }/*# sourceMappingURL=footer.css.map */

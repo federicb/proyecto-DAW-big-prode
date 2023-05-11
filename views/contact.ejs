@@ -4,37 +4,44 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/universal.css">
+    <link rel="stylesheet" href="/styles/navigation.css">
+    <link rel="stylesheet" href="/styles/contact.css">
+    <link rel="stylesheet" href="/styles/footer.css">
+    <!-- FONT AWSOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <title>Contact</title>
 </head>
 <body>
     <!-- HEADER -->
-    <%- include('.partials/navigation.ejs') %>
+    <%- include('./partials/navigation.ejs') %>
 
     <div class="contact">
-        <h1 class="con__title">Contacto</h1>
-        <form id="form_lookup" class="form" action="/contact_user" method="POST">
-            <div class="input__box">
-                <label for="name">Nombre *</label>
-                <input type="text" id="name" name="name" placeholder="Your Name">
-            </div>
-            <div class="input__box">
-                <label for="email">Email *</label>
-                <input type="text" id="email" name="email" placeholder="Your Email Address">
-            </div>
-            <div class="input__box">
-                <label for="phone">Teléfono *</label>
-                <input class="input__box--phone" type="text" id="phone" name="phone" placeholder="Your Phone Number">
-            </div>
-            <div class="alert-error" style="display: none;"></div>
-            <div class="input__box">
-                <label for="message">Mensage</label>
-                <textarea id="message" name="message" rows="6" placeholder="Your Message"></textarea>
-            </div>
-            <div class="input__box">
-                <button class="btn__form1">Enviar</button>
-            </div>
-        </form>
+        <div class="con__tittle">
+            <h1>Contacto</h1>
+        </div>
+        <div class="contact__form">
+            <form id="form" class="form" action="/contact_user" method="POST">
+                <div class="input__box">
+                    <input class="input" type="text" id="name" name="name" placeholder="Nombre *">
+                </div>
+                <div class="input__box">
+                    <input class="input" type="email" id="email" name="email" placeholder="Email *">
+                </div>
+                <div class="input__box input__box--textarea">
+                    <label for="message">Mensaje *</label>
+                    <textarea id="message" name="message" rows="6"></textarea>
+                </div>
+                <div class="input__box">
+                    <button class="btn__form">Enviar</button>
+                </div>
+            </form>
+        </div>
     </div>
     
+    <!-- FOOTER -->
+    <%- include('./partials/footer.ejs') %>
+
 </body>
 </html>

@@ -1,0 +1,103 @@
+.contact {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-image: url("/images/contact.jpg");
+  background-position: center;
+  background-size: cover;
+  height: calc(100vh - 7rem - 26px);
+}
+.contact .con__tittle {
+  width: 80%;
+  display: flex;
+}
+.contact .con__tittle h1 {
+  color: #EEF1EF;
+}
+.contact .contact__form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  border-top: 1px solid #EEF1EF;
+}
+.contact .contact__form .form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  width: 40%;
+}
+.contact .contact__form .form .input__box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+.contact .contact__form .form .input__box .input {
+  border: none;
+  border-bottom: 3px solid #EEF1EF;
+  width: 80%;
+  background: none;
+  outline: none;
+  padding: 1rem;
+  margin: 1rem 0;
+  color: gold;
+}
+.contact .contact__form .form .input__box .input::-moz-placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #EEF1EF;
+  font-weight: 600;
+  opacity: 1; /* Firefox */
+}
+.contact .contact__form .form .input__box .input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #EEF1EF;
+  font-weight: 600;
+  opacity: 1; /* Firefox */
+}
+.contact .contact__form .form .input__box .input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #EEF1EF;
+  font-weight: 600;
+}
+.contact .contact__form .form .input__box .input::-ms-input-placeholder { /* Microsoft Edge */
+  color: #EEF1EF;
+  font-weight: 600;
+}
+.contact .contact__form .form .input__box textarea {
+  width: 80%;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 1rem;
+  font-size: 16px;
+  outline: none;
+  color: gold;
+}
+.contact .contact__form .form .input__box .btn__form {
+  padding: 0.5rem 3rem;
+  border-radius: 5px;
+  background: #EEF1EF;
+  margin-top: 1rem;
+  cursor: pointer;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+}
+.contact .contact__form .form .input__box--textarea {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+  margin-left: 20%;
+}
+.contact .contact__form .form .input__box--textarea label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #EEF1EF;
+  padding: 1rem;
+}
+@media only screen and (max-width: 780px) {
+  .contact .contact__form .form {
+    width: 80%;
+  }
+}/*# sourceMappingURL=contact.css.map */

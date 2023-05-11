@@ -12,6 +12,7 @@ app.set('view engine', 'ejs');
 app.use(require('./routes/index.js'));
 
 
+
 //static files
 app.use(express.static(path.join(__dirname, 'public')));
 

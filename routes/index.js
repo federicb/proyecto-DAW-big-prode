@@ -6,9 +6,9 @@ router.get('/', (req, res) => {
     res.render('index');
 });
 
-// router.get('/contact', (req, res) => {
-//     res.render('contact');
-// });
+router.get('/contact', (req, res) => {
+    res.render('contact');
+});
 
 // router.post("/contact_user", (req,res) => {
 //     console.log(req.body);
