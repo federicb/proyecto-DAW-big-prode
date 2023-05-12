@@ -16,6 +16,7 @@ app.use(express.json())
 
 //routes
 app.use(require('./routes/index.js'));
+app.use(require('./routes/futbol.js'));
 
 
 
