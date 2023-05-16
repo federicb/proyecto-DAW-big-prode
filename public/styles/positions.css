@@ -1,0 +1,102 @@
+h1 {
+  padding: 3rem 33rem;
+  font-size: 45px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: row;
+  margin-top: 2rem;
+}
+.container .afa__logo {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  flex-direction: row;
+  position: sticky;
+  top: 19%;
+}
+.container .afa__logo img {
+  width: 400px;
+  border-radius: 5px;
+}
+.container .standings {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 50%;
+  margin-bottom: 2rem;
+}
+.container .standings .standings__head {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  background: #000000;
+}
+.container .standings .standings__head .head {
+  color: white;
+  padding: 9px;
+  font-size: 20px;
+  width: 3rem;
+  text-align: center;
+}
+.container .standings .standings__head .head__logo {
+  width: 17px;
+}
+.container .standings .standings__head .head__name {
+  width: 17rem;
+  padding-left: 1rem;
+  text-align: start;
+}
+.container .standings .standings__head .head__dif {
+  width: 5rem;
+  border-radius: 0 5px 0 0;
+}
+.container .standings .standings__head .head__pos {
+  border-radius: 5px 0 0 0;
+}
+.container .standings .standings__rank {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  border-top: 1px solid #d2d1d1;
+}
+.container .standings .standings__rank span {
+  padding: 9px;
+  font-size: 20px;
+  width: 3rem;
+  text-align: center;
+}
+.container .standings .standings__rank .rank__name {
+  width: 17rem;
+  padding-left: 1rem;
+  text-align: start;
+}
+.container .standings .standings__rank img {
+  width: 35px;
+}
+.container .standings .standings__rank .rank__points {
+  background: #B2B2B2;
+}
+.container .standings .standings__rank .rank__dif {
+  width: 4rem;
+}
+.container .glossary {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+  background: #EFEFEF;
+  border-radius: 5px;
+  width: 15%;
+  position: sticky;
+  top: 19%;
+  line-height: 25px;
+  font-size: 17px;
+  padding: 1rem;
+}/*# sourceMappingURL=positions.css.map */

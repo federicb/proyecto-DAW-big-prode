@@ -1,0 +1,96 @@
+@mixin flex( $display, $justify, $align, $direction){
+    display: $display;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $direction;
+}
+@mixin media($medida: 780px){
+    @media only screen and (max-width: $medida){
+        @content
+    }
+}
+
+h1{
+    padding: 3rem 33rem;
+    font-size: 45px;
+}
+.container{
+    @include flex(flex, center, start, row);
+    margin-top: 2rem;
+    .afa__logo{
+        @include flex(flex, center, end, row);
+        position: sticky;
+        top: 19%;
+        img{
+            width: 400px;
+            border-radius: 5px;
+        }
+    }
+    .standings{
+        @include flex(flex, center, center, column);
+        width: 50%;
+        margin-bottom: 2rem;
+        .standings__head{
+            @include flex(flex, center, center, row);
+            background: #000000;
+            .head{
+                color: white;
+                padding: 9px;
+                font-size: 20px;
+                width: 3rem;
+                text-align: center;
+            }
+            .head__logo{
+                width: 17px
+            }
+            .head__name{
+                width: 17rem;
+                padding-left: 1rem;
+                text-align: start;
+            }
+            .head__dif{
+                width: 5rem;
+                border-radius: 0 5px 0 0;
+            }
+            .head__pos{
+                border-radius: 5px 0 0 0;
+            }
+            
+        }
+        .standings__rank{
+            @include flex(flex, center, center, row);
+            border-top: 1px solid #d2d1d1;
+            span{
+                padding: 9px;
+                font-size: 20px;
+                width: 3rem;
+                text-align: center;
+            }
+            .rank__name{
+                width: 17rem;
+                padding-left: 1rem;
+                text-align: start;
+            }
+            img{
+                width: 35px;
+            }
+            .rank__points{
+                background: #B2B2B2;
+            }
+            .rank__dif{
+                width: 4rem;
+            }
+        }
+    }
+    .glossary{
+        @include flex(flex, center, start, column);
+        background: #EFEFEF;
+        border-radius: 5px;
+        width: 15%;
+        position: sticky;
+        top: 19%;
+        line-height: 25px;
+        font-size: 17px;
+        padding: 1rem;
+    }
+}

@@ -17,14 +17,15 @@ router.get('/posiciones', async (req, res) =>{
         // console.log(data.response);
         // console.log(data.response[0]);
         console.log(data.response[0].league.standings[1]);
+
         const standings = data.response[0].league.standings[1];
+        // standings.forEach(team => {
+        // const teamName = team.team.name;
+        // console.log(teamName);
+        // });
 
-        standings.forEach(team => {
-        const teamName = team.team.name;
-        console.log(teamName);
-        });
-
-        res.send(data.response[0].league.standings[1]);
+        // res.send(data.response[0].league.standings[1]);
+        res.render('positions', { standings });
     })
     .catch((err) => {
         console.log(err);
