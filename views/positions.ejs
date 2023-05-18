@@ -17,51 +17,53 @@
 <body>
     <!-- HEADER -->
     <%- include('./partials/navigation.ejs') %>
-
-    <h1>Tabla de posiciones</h1>
-    <div class="container">
-        <div class="afa__logo"><img src="/images/AFA_LPF.jpg" alt=""></div>
-        <div class="standings">
-            <div class="standings__head">
-                <span class="head head__pos">POS</span>
-                <span class="head head__logo"></span>
-                <span class="head head__name">EQUIPO</span>
-                <span class="head">PTS</span>
-                <span class="head">PJ</span>
-                <span class="head">GF</span>
-                <span class="head">GC</span>
-                <span class="head">PG</span>
-                <span class="head">PE</span>
-                <span class="head">PP</span>       
-                <span class="head head__dif">DifGol</span>       
-            </div>
-            <% for( let i = 0; i < standings.length; i++ ) { %>
-                <div class="standings__rank">
-                    <span><%= standings[i].rank %></span>
-                    <img src="<%= standings[i].team.logo %>" alt="">
-                    <span class="rank__name"><%= standings[i].team.name %></span>
-                    <span class="rank__points"><%= standings[i].points %></span>
-                    <span><%= standings[i].all.played %></span>
-                    <span><%= standings[i].all.goals.for %></span>
-                    <span><%= standings[i].all.goals.against %></span>
-                    <span><%= standings[i].all.win %></span>
-                    <span><%= standings[i].all.draw %></span>
-                    <span><%= standings[i].all.lose %></span>
-                    <span class="rank__dif"><%= standings[i].goalsDiff %></span>
+    <div class="main__positions">
+        <h1>Tabla de posiciones</h1>
+        <div class="container">
+            <div class="afa__logo"><img src="/images/AFA_LPF.jpg" alt=""></div>
+            <div class="standings">
+                <div class="standings__head">
+                    <span class="head head__pos">POS</span>
+                    <span class="head head__logo"></span>
+                    <span class="head head__name">EQUIPO</span>
+                    <span class="head">PTS</span>
+                    <span class="head">PJ</span>
+                    <span class="head">GF</span>
+                    <span class="head">GC</span>
+                    <span class="head">PG</span>
+                    <span class="head">PE</span>
+                    <span class="head">PP</span>       
+                    <span class="head head__dif">DifGol</span>       
                 </div>
-            <% } %>
-        </div>
-        <div class="glossary">
-            <span>Pts: Puntos</span>
-            <span>PJ: Partidos Jugados</span>
-            <span>GF: Goles a Favor</span>
-            <span>GC: Goles en Contra</span>
-            <span>PG: Partidos Ganados</span>
-            <span>PE: Partidos Empatados</span>
-            <span>PP: Partidos Perdidos</span>
-            <span>DifGol: Diferencia de Goles</span>
+                <% for( let i = 0; i < standings.length; i++ ) { %>
+                    <div class="standings__rank">
+                        <span><%= standings[i].rank %></span>
+                        <img src="<%= standings[i].team.logo %>" alt="">
+                        <span class="rank__name"><%= standings[i].team.name %></span>
+                        <span class="rank__points"><%= standings[i].points %></span>
+                        <span><%= standings[i].all.played %></span>
+                        <span><%= standings[i].all.goals.for %></span>
+                        <span><%= standings[i].all.goals.against %></span>
+                        <span><%= standings[i].all.win %></span>
+                        <span><%= standings[i].all.draw %></span>
+                        <span><%= standings[i].all.lose %></span>
+                        <span class="rank__dif"><%= standings[i].goalsDiff %></span>
+                    </div>
+                <% } %>
+            </div>
+            <div class="glossary">
+                <span>Pts: Puntos</span>
+                <span>PJ: Partidos Jugados</span>
+                <span>GF: Goles a Favor</span>
+                <span>GC: Goles en Contra</span>
+                <span>PG: Partidos Ganados</span>
+                <span>PE: Partidos Empatados</span>
+                <span>PP: Partidos Perdidos</span>
+                <span>DifGol: Diferencia de Goles</span>
+            </div>
         </div>
     </div>
+
     <!-- FOOTER -->
     <%- include('./partials/footer.ejs') %>
 </body>

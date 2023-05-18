@@ -9,88 +9,155 @@
         @content
     }
 }
-
-h1{
-    padding: 3rem 33rem;
-    font-size: 45px;
-}
-.container{
-    @include flex(flex, center, start, row);
-    margin-top: 2rem;
-    .afa__logo{
-        @include flex(flex, center, end, row);
-        position: sticky;
-        top: 19%;
-        img{
-            width: 400px;
-            border-radius: 5px;
+.main__positions{
+    @include flex(flex, center, center, column);
+    h1{
+        padding: 3rem 33rem;
+        font-size: 45px;
+        @include media(1300px){
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+            padding-left: calc((100% - (25rem * 2)) / 2);
+            padding-right: calc((100% - (25rem * 2)) / 2);
+          
         }
     }
-    .standings{
-        @include flex(flex, center, center, column);
-        width: 50%;
-        margin-bottom: 2rem;
-        .standings__head{
-            @include flex(flex, center, center, row);
-            background: #000000;
-            .head{
-                color: white;
-                padding: 9px;
-                font-size: 20px;
-                width: 3rem;
-                text-align: center;
-            }
-            .head__logo{
-                width: 17px
-            }
-            .head__name{
-                width: 17rem;
-                padding-left: 1rem;
-                text-align: start;
-            }
-            .head__dif{
-                width: 5rem;
-                border-radius: 0 5px 0 0;
-            }
-            .head__pos{
-                border-radius: 5px 0 0 0;
-            }
-            
+    .container{
+        @include flex(flex, space-between, start, row);
+        margin-top: 2rem;
+        @include media(1200px){
+            @include flex(flex, space-between, center, column);
         }
-        .standings__rank{
-            @include flex(flex, center, center, row);
-            border-top: 1px solid #d2d1d1;
-            span{
-                padding: 9px;
-                font-size: 20px;
-                width: 3rem;
-                text-align: center;
-            }
-            .rank__name{
-                width: 17rem;
-                padding-left: 1rem;
-                text-align: start;
+        .afa__logo{
+            @include flex(flex, center, end, row);
+            position: sticky;
+            top: 19%;
+            @include media(1200px){
+                position: relative;
             }
             img{
-                width: 35px;
-            }
-            .rank__points{
-                background: #B2B2B2;
-            }
-            .rank__dif{
-                width: 4rem;
+                width: 400px;
+                border-radius: 5px;
+                @include media(1300px){
+                    width: 300px;
+                }
+                @include media(1200px){
+                    width: 450px;
+                }
             }
         }
-    }
-    .glossary{
-        @include flex(flex, center, start, column);
-        background: #EFEFEF;
-        border-radius: 5px;
-        width: 15%;
-        position: sticky;
-        top: 19%;
-        line-height: 25px;
-        font-size: 17px;
-        padding: 1rem;
+        .standings{
+            @include flex(flex, center, center, column);
+            width: 50%;
+            margin-bottom: 2rem;
+            font-size: 20px;
+            @include media(1300px){
+                font-size: 15px;
+            }
+            @include media(1200px){
+                position: relative;
+                margin: 2rem 0;
+            }
+            @include media(450px){
+                width: 100%;
+                font-size: 13px;
+            }
+            .standings__head{
+                @include flex(flex, center, center, row);
+                background: #000000;
+                .head{
+                    color: white;
+                    padding: 9px;
+                    width: 3rem;
+                    text-align: center;
+                    @include media(1300px){
+                        width: 2.5rem;
+                    }
+                    @include media(450px){
+                        padding: 2px;
+                        width: 20px;
+                    }
+                }
+                .head__logo{
+                    width: 17px
+                }
+                .head__name{
+                    width: 17rem;
+                    padding-left: 1rem;
+                    text-align: start;
+                    @include media(450px){
+                        width: 8rem;
+                    }
+                }
+                .head__dif{
+                    width: 5rem;
+                    border-radius: 0 5px 0 0;
+                    @include media(450px){
+                        width: 4rem;
+                    }
+                }
+                .head__pos{
+                    border-radius: 5px 0 0 0;
+                }
+                
+            }
+            .standings__rank{
+                @include flex(flex, center, center, row);
+                border-top: 1px solid #d2d1d1;
+                span{
+                    padding: 9px;
+                    width: 3rem;
+                    text-align: center;
+                    @include media(1300px){
+                        width: 2.5rem;
+                    }
+                    @include media(450px){
+                        width: 20px;
+                    }
+                }
+                .rank__name{
+                    width: 17rem;
+                    padding-left: 1rem;
+                    text-align: start;
+                    @include media(450px){
+                        width: 7rem;
+                    }
+                }
+                img{
+                    width: 35px;
+                    @include media(450px){
+                        width: 25px;
+                    }
+                }
+                .rank__points{
+                    background: #B2B2B2;
+                }
+                .rank__dif{
+                    width: 4rem;
+                    @include media(450px){
+                        width: 3rem;
+                    }
+                }
+            }
+        }
+        .glossary{
+            @include flex(flex, center, start, column);
+            background: #EFEFEF;
+            border-radius: 5px;
+            width: 15%;
+            position: sticky;
+            top: 19%;
+            line-height: 25px;
+            font-size: 17px;
+            padding: 1rem;
+            @include media(1300px){
+                font-size: 15px;
+            }
+            @include media(1200px){
+                position: relative;
+                width: 37%;
+                margin-bottom: 2rem;
+            }
+        }
     }
 }

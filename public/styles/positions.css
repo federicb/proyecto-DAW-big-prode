@@ -1,16 +1,37 @@
-h1 {
+.main__positions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.main__positions h1 {
   padding: 3rem 33rem;
   font-size: 45px;
 }
-
-.container {
+@media only screen and (max-width: 1300px) {
+  .main__positions h1 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    padding-left: calc((100% - 50rem) / 2);
+    padding-right: calc((100% - 50rem) / 2);
+  }
+}
+.main__positions .container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: start;
   flex-direction: row;
   margin-top: 2rem;
 }
-.container .afa__logo {
+@media only screen and (max-width: 1200px) {
+  .main__positions .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+  }
+}
+.main__positions .container .afa__logo {
   display: flex;
   justify-content: center;
   align-items: end;
@@ -18,75 +39,152 @@ h1 {
   position: sticky;
   top: 19%;
 }
-.container .afa__logo img {
+@media only screen and (max-width: 1200px) {
+  .main__positions .container .afa__logo {
+    position: relative;
+  }
+}
+.main__positions .container .afa__logo img {
   width: 400px;
   border-radius: 5px;
 }
-.container .standings {
+@media only screen and (max-width: 1300px) {
+  .main__positions .container .afa__logo img {
+    width: 300px;
+  }
+}
+@media only screen and (max-width: 1200px) {
+  .main__positions .container .afa__logo img {
+    width: 450px;
+  }
+}
+.main__positions .container .standings {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   width: 50%;
   margin-bottom: 2rem;
+  font-size: 20px;
 }
-.container .standings .standings__head {
+@media only screen and (max-width: 1300px) {
+  .main__positions .container .standings {
+    font-size: 15px;
+  }
+}
+@media only screen and (max-width: 1200px) {
+  .main__positions .container .standings {
+    position: relative;
+    margin: 2rem 0;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .main__positions .container .standings {
+    width: 100%;
+    font-size: 13px;
+  }
+}
+.main__positions .container .standings .standings__head {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
   background: #000000;
 }
-.container .standings .standings__head .head {
+.main__positions .container .standings .standings__head .head {
   color: white;
   padding: 9px;
-  font-size: 20px;
   width: 3rem;
   text-align: center;
 }
-.container .standings .standings__head .head__logo {
+@media only screen and (max-width: 1300px) {
+  .main__positions .container .standings .standings__head .head {
+    width: 2.5rem;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .main__positions .container .standings .standings__head .head {
+    padding: 2px;
+    width: 20px;
+  }
+}
+.main__positions .container .standings .standings__head .head__logo {
   width: 17px;
 }
-.container .standings .standings__head .head__name {
+.main__positions .container .standings .standings__head .head__name {
   width: 17rem;
   padding-left: 1rem;
   text-align: start;
 }
-.container .standings .standings__head .head__dif {
+@media only screen and (max-width: 450px) {
+  .main__positions .container .standings .standings__head .head__name {
+    width: 8rem;
+  }
+}
+.main__positions .container .standings .standings__head .head__dif {
   width: 5rem;
   border-radius: 0 5px 0 0;
 }
-.container .standings .standings__head .head__pos {
+@media only screen and (max-width: 450px) {
+  .main__positions .container .standings .standings__head .head__dif {
+    width: 4rem;
+  }
+}
+.main__positions .container .standings .standings__head .head__pos {
   border-radius: 5px 0 0 0;
 }
-.container .standings .standings__rank {
+.main__positions .container .standings .standings__rank {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
   border-top: 1px solid #d2d1d1;
 }
-.container .standings .standings__rank span {
+.main__positions .container .standings .standings__rank span {
   padding: 9px;
-  font-size: 20px;
   width: 3rem;
   text-align: center;
 }
-.container .standings .standings__rank .rank__name {
+@media only screen and (max-width: 1300px) {
+  .main__positions .container .standings .standings__rank span {
+    width: 2.5rem;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .main__positions .container .standings .standings__rank span {
+    width: 20px;
+  }
+}
+.main__positions .container .standings .standings__rank .rank__name {
   width: 17rem;
   padding-left: 1rem;
   text-align: start;
 }
-.container .standings .standings__rank img {
+@media only screen and (max-width: 450px) {
+  .main__positions .container .standings .standings__rank .rank__name {
+    width: 7rem;
+  }
+}
+.main__positions .container .standings .standings__rank img {
   width: 35px;
 }
-.container .standings .standings__rank .rank__points {
+@media only screen and (max-width: 450px) {
+  .main__positions .container .standings .standings__rank img {
+    width: 25px;
+  }
+}
+.main__positions .container .standings .standings__rank .rank__points {
   background: #B2B2B2;
 }
-.container .standings .standings__rank .rank__dif {
+.main__positions .container .standings .standings__rank .rank__dif {
   width: 4rem;
 }
-.container .glossary {
+@media only screen and (max-width: 450px) {
+  .main__positions .container .standings .standings__rank .rank__dif {
+    width: 3rem;
+  }
+}
+.main__positions .container .glossary {
   display: flex;
   justify-content: center;
   align-items: start;
@@ -99,4 +197,16 @@ h1 {
   line-height: 25px;
   font-size: 17px;
   padding: 1rem;
+}
+@media only screen and (max-width: 1300px) {
+  .main__positions .container .glossary {
+    font-size: 15px;
+  }
+}
+@media only screen and (max-width: 1200px) {
+  .main__positions .container .glossary {
+    position: relative;
+    width: 37%;
+    margin-bottom: 2rem;
+  }
 }/*# sourceMappingURL=positions.css.map */

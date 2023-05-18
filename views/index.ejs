@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="/styles/footer.css">
     <!-- FONT AWSOME -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="shortcut icon" href="#" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
     <title>BIG PRODE</title>
 </head>
 <body>
@@ -29,7 +31,15 @@
             <div class="info">
                 <span>¿Cómo funciona?</span>
                 <p>BIG PRODE consiste en realizar pronosticos de futbol profesional. <br>Los mismos se realizan por jornadas donde tendras que pronosticar los resultados de todos los encuentros.</p>               
-                <a href="#">Ver reglamento</a>
+                <a href="#rules" id="enlace">Ver reglamento</a>
+                <div id="rules" class="caja-popup">
+                    <div class="popup">
+                        <a href="#" class="cerrar">&times;</a>
+                        <div class="contenido">
+                            <%- include('./rules.ejs') %>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="info">
                 <span>¿Con quien compites?</span>

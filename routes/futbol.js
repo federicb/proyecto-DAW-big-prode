@@ -16,7 +16,7 @@ router.get('/posiciones', async (req, res) =>{
         const data = await response.json();
         // console.log(data.response);
         // console.log(data.response[0]);
-        // console.log(data.response[0].league.standings[1]);
+        console.log(data.response[0].league.standings[1]);
         const standings = data.response[0].league.standings[1];
         res.render('positions', { standings });
     } catch (err) {
