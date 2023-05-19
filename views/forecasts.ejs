@@ -8,60 +8,66 @@
 </head>
 <body>
     <h1>pronosticos</h1>
-    <!-- <select id="roundSelect" name="select">
-        <option id="1" value="round1">Fecha 1</option>
-        <option id="2" value="round2">Fecha 2</option>
-        <option id="3" value="round3">Fecha 3</option>        
-        <option id="4" value="round4">Fecha 4</option>
-        <option id="5" value="round5">Fecha 5</option>
-        <option id="6" value="round6">Fecha 6</option>
-        <option id="7" value="round7">Fecha 7</option>
-        <option id="8" value="round8">Fecha 8</option>
-        <option id="9" value="round9">Fecha 9</option>
-        <option id="10" value="round10">Fecha 10</option>
-        <option id="11" value="round11">Fecha 11</option>
-        <option id="12" value="round12">Fecha 12</option>
-        <option id="13" value="round13">Fecha 13</option>
-        <option id="14" value="round14">Fecha 14</option>
-        <option id="15" value="round15">Fecha 15</option>
-        <option id="16" value="round16">Fecha 16</option>
-        <option id="17" value="round17">Fecha 17</option>
-        <option id="18" value="round18">Fecha 18</option>
-        <option id="19" value="round19">Fecha 19</option>
-        <option id="20" value="round20">Fecha 20</option>
-        <option id="21" value="round21">Fecha 21</option>
-        <option id="22" value="round22">Fecha 22</option>
-        <option id="23" value="round23">Fecha 23</option>
-        <option id="24" value="round24">Fecha 24</option>
-        <option id="25" value="round25">Fecha 25</option>
-        <option id="26" value="round26">Fecha 26</option>
-        <option id="27" value="round27">Fecha 27</option>
-        <option id="28" value="round28">Fecha 28</option>
-    </select> -->
-    <div class="fixtures">
-        <% for( let i = 0; i < matches.length; i++ ) { %>
-            <p><%= matches[i].homeTeamName %> - <%= matches[i].homeGoals %></p>
-            <p><%= matches[i].awayTeamName %> - <%= matches[i].awayGoals %></p>
+    <select id="roundSelect" name="select" onchange="filterMatches()">
+        <% for(let i = 1; i <= matches.length/14; i++) { %>
+          <option value="<%= `1st Phase - ${i}` %>">Fecha <%= i %></option>
         <% } %>
-    </div> 
-    <!-- <div id="wg-api-football-games"
-        data-host="v3.football.api-sports.io"
-        data-key="189c6369de01ac78a7e883e97676d7d1"
-        data-date=""
-        data-league="128"
-        data-season="2023"
-        data-theme=""
-        data-refresh="0"
-        data-show-toolbar="true"
-        data-show-errors="false"
-        data-show-logos="true"
-        data-modal-game="true"
-        data-modal-standings="true"
-        data-modal-show-logos="true">
-    </div>
-    <script
-        type="module"
-        src="https://widgets.api-sports.io/2.0.3/widgets.js">
+    </select>
+
+    <div class="fixtures">
+        <% for (let i = 0; i < matches.length; i++) { %>
+            <% if (matches[i].league.round.includes('1st Phase')) { %>
+                <p class="match-result" data-round="<%= matches[i].league.round %>">
+                    <strong>Round: <%= matches[i].league.round %></strong>
+                    <%= matches[i].teams.home.name %> <%= matches[i].goals.home %> - <%= matches[i].goals.away %> <%= matches[i].teams.away.name %>
+                </p>
+            <% } %>
+        <% } %>
+    </div>        
+
+<!-- BUENO -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const roundSelect = document.getElementById('roundSelect');
+            let selectedRound = roundSelect.value;
+            filterMatches(selectedRound);
+    
+            roundSelect.addEventListener('change', function() {
+                selectedRound = roundSelect.value;
+                filterMatches(selectedRound);
+            });
+        });
+    
+        function filterMatches(selectedRound) {
+            const matchResults = document.getElementsByClassName('match-result');
+    
+            for (let i = 0; i < matchResults.length; i++) {
+                const matchRound = matchResults[i].getAttribute('data-round');
+                if (matchRound === selectedRound) {
+                    matchResults[i].style.display = 'block';
+                } else {
+                    matchResults[i].style.display = 'none';
+                }
+            }
+        }
+    </script>
+    
+
+    <!-- <script>
+        function filterMatches() {
+            const roundSelect = document.getElementById('roundSelect');
+            const selectedRound = roundSelect.value;
+            const matchResults = document.getElementsByClassName('match-result');
+
+            for (let i = 0; i < matchResults.length; i++) {
+                const matchRound = matchResults[i].getAttribute('data-round');
+                if (matchRound === selectedRound) {
+                    matchResults[i].style.display = 'block';
+                } else {
+                    matchResults[i].style.display = 'none';
+                }
+            }
+        }
     </script> -->
 
 </body>
