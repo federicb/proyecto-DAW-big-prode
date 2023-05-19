@@ -10,7 +10,7 @@ router.get('/posiciones', async (req, res) =>{
             method: "GET",
             headers: {
                 "x-rapidapi-host": "v3.football.api-sports.io",
-                "x-rapidapi-key": "189c6369de01ac78a7e883e97676d7d1"
+                "x-rapidapi-key": process.env.API_KEY
             }
         });
         const data = await response.json();
@@ -32,13 +32,13 @@ router.get('/pronosticos', async (req, res) =>{
             method: "GET",
             headers: {
                 "x-rapidapi-host": "v3.football.api-sports.io",
-                "x-rapidapi-key": "189c6369de01ac78a7e883e97676d7d1"
+                "x-rapidapi-key": process.env.API_KEY
             }
         });
         const data = await response.json();
 
         const filteredMatches = data.response.filter(match => match.league.round.includes('1st Phase'));
-        // Obtén la fecha actual
+        // fecha actual
         const currentDate = new Date().toISOString().split('T')[0];
         console.log(currentDate)
 

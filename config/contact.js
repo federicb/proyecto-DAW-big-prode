@@ -1,6 +1,4 @@
 const nodemailer = require('nodemailer');
-const dotenv = require('dotenv');
-dotenv.config();
 
 async function conex_mail(name, email, message){
     contentHTML = `
