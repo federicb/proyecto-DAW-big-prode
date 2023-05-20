@@ -24,40 +24,43 @@
             <% } %>
         </select>    
         <div class="fixture">
-            <table>
-                <thead>
-                    <tr>
-                        <th class="date">Fecha</th>
-                        <th class="teams">Local</th>
-                        <th>PL</th>
-                        <th class="vs">-</th>
-                        <th>PV</th>
-                        <th class="teams">Visitante</th>
-                        <th>Res.</th>
-                        <th>Pts.</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% for (let i = 0; i < matches.length; i++) { %>
-                        <% if (matches[i].league.round.includes('1st Phase')) { %>
-                            <tr class="match-result" data-round="<%= matches[i].league.round %>">
-                                <td class="date">
-                                  <% const matchDate = new Date(matches[i].fixture.date); %>
-                                  <% const md = matchDate.toLocaleString('es-ES', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }) %>
-                                  <%= md.replace(",", "")  %>
-                                </td>
-                                <td class="teams"><div class="teams__logo"><img style="width: 25px;" src="<%= matches[i].teams.home.logo %>" alt=""><span><%= matches[i].teams.home.name %></span></div></td>
-                                <td><div class="input__cont"><input type="text" name="forecastLocal" class="match-result" data-round="<%= matches[i].league.round %>"></div></td>
-                                <td class="vs">-</td>
-                                <td><div class="input__cont"><input type="text" name="forecastAway" class="match-result" data-round="<%= matches[i].league.round %>"></div></td>
-                                <td class="teams"><div class="teams__logo"><span><%= matches[i].teams.away.name %></span><img style="width: 25px;" src="<%= matches[i].teams.away.logo %>" alt=""></div></td>
-                                <td><%= matches[i].goals.home %> - <%= matches[i].goals.away %></td>
-                                <td></td>
-                            </tr>
+            <form id="form" action="/users_forecasts" method="POST">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="date">Fecha</th>
+                            <th class="teams">Local</th>
+                            <th>PL</th>
+                            <th class="vs">-</th>
+                            <th>PV</th>
+                            <th class="teams">Visitante</th>
+                            <th>Res.</th>
+                            <th>Pts.</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for (let i = 0; i < matches.length; i++) { %>
+                            <% if (matches[i].league.round.includes('1st Phase')) { %>
+                                <tr class="match-result" data-round="<%= matches[i].league.round %>">
+                                    <td class="date">
+                                      <% const matchDate = new Date(matches[i].fixture.date); %>
+                                      <% const md = matchDate.toLocaleString('es-ES', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }) %>
+                                      <%= md.replace(",", "")  %>
+                                    </td>
+                                    <td class="teams"><div class="teams__logo"><img style="width: 25px;" src="<%= matches[i].teams.home.logo %>" alt=""><span><%= matches[i].teams.home.name %></span></div></td>
+                                    <td><div class="input__cont"><input type="text" maxlength="2" oninput="validarNumeros(event)" id="localF-<%= i+1 %>" class="forecasts" name="forecastLocal-<%= i+1 %>"></div></td>
+                                    <td class="vs">-</td>
+                                    <td><div class="input__cont"><input type="number" id="awayF-<%= i+1 %>" class="forecasts" name="forecastAway-<%= i+1 %>"></div></td>
+                                    <td class="teams"><div class="teams__logo"><span><%= matches[i].teams.away.name %></span><img style="width: 25px;" src="<%= matches[i].teams.away.logo %>" alt=""></div></td>
+                                    <td><span id="localR-<%= i+1 %>"><%= matches[i].goals.home %></span> - <span id="awayR-<%= i+1 %>"><%= matches[i].goals.away %></span></td>
+                                    <td></td>
+                                </tr>
+                            <% } %>
                         <% } %>
-                    <% } %>
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+                <button id="send">Enviar</button>
+            </form>
         </div>  
     </div>
     <!-- FOOTER -->
@@ -65,6 +68,7 @@
 
 <!-- BUENO -->
     <script>
+        
         document.addEventListener('DOMContentLoaded', function() {
             const roundSelect = document.getElementById('roundSelect');
             let selectedRound = roundSelect.value;
@@ -74,6 +78,9 @@
                 selectedRound = roundSelect.value;
                 filterMatches(selectedRound);
             });
+
+            const submitButton = document.querySelector('#send');
+            submitButton.addEventListener('click', enviarDatos);
         });
     
         function filterMatches(selectedRound) {
@@ -97,25 +104,31 @@
             return day + '/' + month + ' ' + hours + ':' + minutes;
         }
 
-    </script>
-    
+        function enviarDatos() {
+            const inputs = document.getElementsByClassName('forecasts');
+            const datos = {};
 
-    <!-- <script>
-        function filterMatches() {
-            const roundSelect = document.getElementById('roundSelect');
-            const selectedRound = roundSelect.value;
-            const matchResults = document.getElementsByClassName('match-result');
-
-            for (let i = 0; i < matchResults.length; i++) {
-                const matchRound = matchResults[i].getAttribute('data-round');
-                if (matchRound === selectedRound) {
-                    matchResults[i].style.display = 'block';
-                } else {
-                    matchResults[i].style.display = 'none';
-                }
+            for (let i = 0; i < inputs.length; i++) {
+                const id = inputs[i].id;
+                const valor = inputs[i].value;
+                datos[id] = valor;
             }
+
+            axios.post('/enviar-datos', datos)
+                .then(response => {
+                console.log(response.data);
+                })
+                .catch(error => {
+                console.error(error);
+            });
         }
-    </script> -->
+        function validarNumeros(event) {
+            const input = event.target.value;
+            event.target.value = input.replace(/[^0-9]/g, '');
+        }
+
+
+    </script>
 
 </body>
 </html>

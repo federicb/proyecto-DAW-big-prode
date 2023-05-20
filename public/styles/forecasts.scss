@@ -12,6 +12,7 @@
 
 .container{
     @include flex(flex, center, center, column);
+    width: 100%;
     h1{
         font-size: 40px;
     }
@@ -25,6 +26,7 @@
     }
     .fixture{     
         width: 70%;
+        max-width: 1280px;
         margin-bottom: 2rem;
         table{
             @include flex(flex, center, center, column);
@@ -64,9 +66,11 @@
                         width: 4rem;
                         .input__cont{
                             @include flex(flex, center, center, row);
-                            .match-result{
+                            .forecasts{
                                 width: 3rem;
-                            }
+                                text-align: center;
+                                outline: none;
+                            }                           
                         }
                     }
                     .date{
@@ -88,4 +92,22 @@
             }
         }
     }
+}
+#form{
+    @include flex(flex, center, center, column);
+    #send{
+        padding: .7rem 1.3rem;
+        background: #5CCF95;
+        margin-top: 2rem;
+        font-size: 17px;
+        font-weight: 500;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 1px 1px 2px #88ca6f;
+        cursor: pointer;
+        &:hover{
+            background: #01b85c;
+        }
+    }
+
 }

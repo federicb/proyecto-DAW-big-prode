@@ -3,6 +3,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  width: 100%;
 }
 .container h1 {
   font-size: 40px;
@@ -17,6 +18,7 @@
 }
 .container .fixture {
   width: 70%;
+  max-width: 1280px;
   margin-bottom: 2rem;
 }
 .container .fixture table {
@@ -68,8 +70,10 @@
   align-items: center;
   flex-direction: row;
 }
-.container .fixture table tbody tr td .input__cont .match-result {
+.container .fixture table tbody tr td .input__cont .forecasts {
   width: 3rem;
+  text-align: center;
+  outline: none;
 }
 .container .fixture table tbody tr .date {
   width: 4.5rem;
@@ -88,4 +92,25 @@
 }
 .container .fixture table tbody tr .teams .teams__logo span {
   width: 80%;
+}
+
+#form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#form #send {
+  padding: 0.7rem 1.3rem;
+  background: #5CCF95;
+  margin-top: 2rem;
+  font-size: 17px;
+  font-weight: 500;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 2px #88ca6f;
+  cursor: pointer;
+}
+#form #send:hover {
+  background: #01b85c;
 }/*# sourceMappingURL=forecasts.css.map */

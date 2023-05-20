@@ -41,7 +41,7 @@ router.get('/pronosticos', async (req, res) =>{
         const currentDate = new Date().toISOString().split('T')[0];
         // console.log(currentDate)
 
-        // res.json(data.response[350])
+        // res.json(filteredMatches)
         res.render('forecasts', { currentDate, matches: filteredMatches });
 
 
@@ -50,5 +50,13 @@ router.get('/pronosticos', async (req, res) =>{
         res.status(500).send("Error al obtener las pronósticos");
     }
 });
+
+router.post('/enviar-datos', (req, res) => {
+    const datos = req.body; // Obtener los datos enviados por el cliente
+    // Hacer algo con los datos recibidos
+    console.log(datos);
+    res.send('Datos recibidos correctamente');
+  });
+  
 
 module.exports = router;
