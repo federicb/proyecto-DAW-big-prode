@@ -2,7 +2,6 @@ const {Router} = require('express');
 
 const router = Router();
 
-
 router.get('/posiciones', async (req, res) =>{
     
     try {
@@ -40,8 +39,9 @@ router.get('/pronosticos', async (req, res) =>{
         const filteredMatches = data.response.filter(match => match.league.round.includes('1st Phase'));
         // fecha actual
         const currentDate = new Date().toISOString().split('T')[0];
-        console.log(currentDate)
+        // console.log(currentDate)
 
+        // res.json(data.response[350])
         res.render('forecasts', { currentDate, matches: filteredMatches });
 
 

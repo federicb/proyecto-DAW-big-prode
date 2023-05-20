@@ -18,8 +18,11 @@
         <% for (let i = 0; i < matches.length; i++) { %>
             <% if (matches[i].league.round.includes('1st Phase')) { %>
                 <p class="match-result" data-round="<%= matches[i].league.round %>">
+                    <% const matchDate = new Date(matches[i].fixture.date); %>
+                    <% const md = matchDate.toLocaleString('es-ES', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }) %>
+                    <%= md.replace(",", "")  %>
                     <strong>Round: <%= matches[i].league.round %></strong>
-                    <%= matches[i].teams.home.name %> <%= matches[i].goals.home %> - <%= matches[i].goals.away %> <%= matches[i].teams.away.name %>
+                    <img src="<%= matches[i].teams.home.logo %>" alt=""> <%= matches[i].teams.home.name %> <%= matches[i].goals.home %> - <%= matches[i].goals.away %> <%= matches[i].teams.away.name %> <img src="<%= matches[i].teams.away.logo %>" alt="">
                 </p>
             <% } %>
         <% } %>
@@ -39,7 +42,7 @@
         });
     
         function filterMatches(selectedRound) {
-            const matchResults = document.getElementsByClassName('match-result');
+            const matchResults = document.querySelectorAll('.match-result');
     
             for (let i = 0; i < matchResults.length; i++) {
                 const matchRound = matchResults[i].getAttribute('data-round');
@@ -50,6 +53,15 @@
                 }
             }
         }
+
+        function formatDate(date) {
+            var day = String(date.getDate()).padStart(2, '0');
+            var month = String(date.getMonth() + 1).padStart(2, '0');
+            var hours = String(date.getHours()).padStart(2, '0');
+            var minutes = String(date.getMinutes()).padStart(2, '0');
+            return day + '/' + month + ' ' + hours + ':' + minutes;
+        }
+
     </script>
     
 
