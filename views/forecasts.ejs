@@ -4,29 +4,64 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    
+    <link rel="stylesheet" href="/styles/universal.css">
+    <link rel="stylesheet" href="/styles/navigation.css">
+    <link rel="stylesheet" href="/styles/forecasts.css">
+    <link rel="stylesheet" href="/styles/footer.css">
+    <!-- FONT AWSOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Pronósticos</title>
 </head>
 <body>
-    <h1>pronosticos</h1>
-    <select id="roundSelect" name="select" onchange="filterMatches()">
-        <% for(let i = 1; i <= matches.length/14; i++) { %>
-          <option value="<%= `1st Phase - ${i}` %>">Fecha <%= i %></option>
-        <% } %>
-    </select>
-
-    <div class="fixtures">
-        <% for (let i = 0; i < matches.length; i++) { %>
-            <% if (matches[i].league.round.includes('1st Phase')) { %>
-                <p class="match-result" data-round="<%= matches[i].league.round %>">
-                    <% const matchDate = new Date(matches[i].fixture.date); %>
-                    <% const md = matchDate.toLocaleString('es-ES', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }) %>
-                    <%= md.replace(",", "")  %>
-                    <strong>Round: <%= matches[i].league.round %></strong>
-                    <img src="<%= matches[i].teams.home.logo %>" alt=""> <%= matches[i].teams.home.name %> <%= matches[i].goals.home %> - <%= matches[i].goals.away %> <%= matches[i].teams.away.name %> <img src="<%= matches[i].teams.away.logo %>" alt="">
-                </p>
+    <!-- HEADER -->
+    <%- include('./partials/navigation.ejs') %>
+    <div class="container">
+        <h1>Pronósticos</h1>
+        <select id="roundSelect" name="select" onchange="filterMatches()">
+            <% for(let i = 1; i <= matches.length/14; i++) { %>
+              <option value="<%= `1st Phase - ${i}` %>">Fecha <%= i %></option>
             <% } %>
-        <% } %>
-    </div>        
+        </select>    
+        <div class="fixture">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="date">Fecha</th>
+                        <th class="teams">Local</th>
+                        <th>PL</th>
+                        <th class="vs">-</th>
+                        <th>PV</th>
+                        <th class="teams">Visitante</th>
+                        <th>Res.</th>
+                        <th>Pts.</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (let i = 0; i < matches.length; i++) { %>
+                        <% if (matches[i].league.round.includes('1st Phase')) { %>
+                            <tr class="match-result" data-round="<%= matches[i].league.round %>">
+                                <td class="date">
+                                  <% const matchDate = new Date(matches[i].fixture.date); %>
+                                  <% const md = matchDate.toLocaleString('es-ES', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }) %>
+                                  <%= md.replace(",", "")  %>
+                                </td>
+                                <td class="teams"><div class="teams__logo"><img style="width: 25px;" src="<%= matches[i].teams.home.logo %>" alt=""><span><%= matches[i].teams.home.name %></span></div></td>
+                                <td><div class="input__cont"><input type="text" name="forecastLocal" class="match-result" data-round="<%= matches[i].league.round %>"></div></td>
+                                <td class="vs">-</td>
+                                <td><div class="input__cont"><input type="text" name="forecastAway" class="match-result" data-round="<%= matches[i].league.round %>"></div></td>
+                                <td class="teams"><div class="teams__logo"><span><%= matches[i].teams.away.name %></span><img style="width: 25px;" src="<%= matches[i].teams.away.logo %>" alt=""></div></td>
+                                <td><%= matches[i].goals.home %> - <%= matches[i].goals.away %></td>
+                                <td></td>
+                            </tr>
+                        <% } %>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>  
+    </div>
+    <!-- FOOTER -->
+    <%- include('./partials/footer.ejs') %>
 
 <!-- BUENO -->
     <script>

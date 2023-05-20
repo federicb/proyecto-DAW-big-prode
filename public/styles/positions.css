@@ -90,9 +90,10 @@
   align-items: center;
   flex-direction: row;
   background: #000000;
+  border-radius: 3px 3px 0 0;
 }
 .main__positions .container .standings .standings__head .head {
-  color: white;
+  color: #EFEFEF;
   padding: 9px;
   width: 3rem;
   text-align: center;
@@ -123,15 +124,11 @@
 }
 .main__positions .container .standings .standings__head .head__dif {
   width: 5rem;
-  border-radius: 0 5px 0 0;
 }
 @media only screen and (max-width: 450px) {
   .main__positions .container .standings .standings__head .head__dif {
     width: 4rem;
   }
-}
-.main__positions .container .standings .standings__head .head__pos {
-  border-radius: 5px 0 0 0;
 }
 .main__positions .container .standings .standings__rank {
   display: flex;

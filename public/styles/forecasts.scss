@@ -1,0 +1,91 @@
+@mixin flex( $display, $justify, $align, $direction){
+    display: $display;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $direction;
+}
+@mixin media($medida: 780px){
+    @media only screen and (max-width: $medida){
+        @content
+    }
+}
+
+.container{
+    @include flex(flex, center, center, column);
+    h1{
+        font-size: 40px;
+    }
+    #roundSelect{
+        width: 30%;
+        padding: .6rem 0;
+        margin: 2rem 0;
+        font-size: 17px;
+        padding-left: 10px;
+        outline: none;
+    }
+    .fixture{     
+        width: 70%;
+        margin-bottom: 2rem;
+        table{
+            @include flex(flex, center, center, column);
+            width: 100%;
+            thead{             
+                width: 100%;
+                background: #000000;
+                border-radius: 3px 3px 0 0;
+                tr{
+                    width: 100%;
+                    color: #EFEFEF;
+                    th{
+                        width: 4rem;                      
+                    }
+                    .date{
+                        width: 4.5rem;
+                    }
+                    .vs{
+                        width: 2rem;
+                    }
+                    .teams{
+                        width: 15rem;                        
+                    }
+                }
+            }
+            tbody{
+                width: 100%;
+                text-align: center;
+                tr{
+                    width: 100%;
+                    border-top: 1px solid #d2d1d1;
+                    &:hover{
+                        background: #5CCF95;
+                        border-radius: 3px;
+                    }
+                    td{
+                        width: 4rem;
+                        .input__cont{
+                            @include flex(flex, center, center, row);
+                            .match-result{
+                                width: 3rem;
+                            }
+                        }
+                    }
+                    .date{
+                        width: 4.5rem;
+                    }
+                    .vs{
+                        width: 2rem;
+                    }
+                    .teams{
+                        width: 15rem;
+                        .teams__logo{
+                            @include flex(flex, space-between, center, row);
+                            span{
+                                width: 80%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

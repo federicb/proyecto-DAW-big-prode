@@ -65,8 +65,9 @@
             .standings__head{
                 @include flex(flex, center, center, row);
                 background: #000000;
+                border-radius: 3px 3px 0 0;
                 .head{
-                    color: white;
+                    color: #EFEFEF;
                     padding: 9px;
                     width: 3rem;
                     text-align: center;
@@ -91,15 +92,10 @@
                 }
                 .head__dif{
                     width: 5rem;
-                    border-radius: 0 5px 0 0;
                     @include media(450px){
                         width: 4rem;
                     }
-                }
-                .head__pos{
-                    border-radius: 5px 0 0 0;
-                }
-                
+                }                
             }
             .standings__rank{
                 @include flex(flex, center, center, row);
