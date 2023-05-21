@@ -113,4 +113,8 @@
 }
 #form #send:hover {
   background: #01b85c;
+}
+
+.selected-round {
+  display: table-row;
 }/*# sourceMappingURL=forecasts.css.map */
