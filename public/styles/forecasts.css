@@ -8,7 +8,13 @@
 .container h1 {
   font-size: 40px;
 }
-.container #roundSelect {
+.container #form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.container #form #roundSelect {
   width: 30%;
   padding: 0.6rem 0;
   margin: 2rem 0;
@@ -16,94 +22,138 @@
   padding-left: 10px;
   outline: none;
 }
-.container .fixture {
-  width: 70%;
+@media only screen and (max-width: 540px) {
+  .container #form #roundSelect {
+    width: 60%;
+    padding-left: 1.5rem;
+  }
+}
+.container #form .fixture {
   max-width: 1280px;
   margin-bottom: 2rem;
 }
-.container .fixture table {
+.container #form .fixture table {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 100%;
 }
-.container .fixture table thead {
-  width: 100%;
+.container #form .fixture table thead {
   background: #000000;
   border-radius: 3px 3px 0 0;
+  padding: 0.6rem 0;
 }
-.container .fixture table thead tr {
-  width: 100%;
+.container #form .fixture table thead tr {
   color: #EFEFEF;
 }
-.container .fixture table thead tr th {
+@media only screen and (max-width: 780px) {
+  .container #form .fixture table thead tr {
+    font-size: 15px;
+  }
+}
+.container #form .fixture table thead tr th {
   width: 4rem;
 }
-.container .fixture table thead tr .date {
+.container #form .fixture table thead tr .date {
   width: 4.5rem;
 }
-.container .fixture table thead tr .vs {
+.container #form .fixture table thead tr .vs {
   width: 2rem;
 }
-.container .fixture table thead tr .teams {
+.container #form .fixture table thead tr .teams {
   width: 15rem;
 }
-.container .fixture table tbody {
-  width: 100%;
+@media only screen and (max-width: 540px) {
+  .container #form .fixture table thead tr .teams {
+    width: 4rem;
+  }
+}
+.container #form .fixture table tbody {
   text-align: center;
 }
-.container .fixture table tbody tr {
-  width: 100%;
+.container #form .fixture table tbody tr {
   border-top: 1px solid #d2d1d1;
+  padding: 0.6rem 0;
 }
-.container .fixture table tbody tr:hover {
+.container #form .fixture table tbody tr:hover {
   background: #5CCF95;
   border-radius: 3px;
 }
-.container .fixture table tbody tr td {
+.container #form .fixture table tbody tr td {
   width: 4rem;
 }
-.container .fixture table tbody tr td .input__cont {
+@media only screen and (max-width: 780px) {
+  .container #form .fixture table tbody tr td {
+    font-size: 15px;
+  }
+}
+.container #form .fixture table tbody tr td .input__cont {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
 }
-.container .fixture table tbody tr td .input__cont .forecasts {
+.container #form .fixture table tbody tr td .input__cont .forecasts {
   width: 3rem;
   text-align: center;
   outline: none;
 }
-.container .fixture table tbody tr .date {
+@media only screen and (max-width: 540px) {
+  .container #form .fixture table tbody tr td .input__cont .forecasts {
+    width: 1.5rem;
+  }
+}
+.container #form .fixture table tbody tr .date {
   width: 4.5rem;
 }
-.container .fixture table tbody tr .vs {
+.container #form .fixture table tbody tr .vs {
   width: 2rem;
 }
-.container .fixture table tbody tr .teams {
+@media only screen and (max-width: 540px) {
+  .container #form .fixture table tbody tr .vs {
+    width: 1.5rem;
+  }
+}
+.container #form .fixture table tbody tr .teams {
   width: 15rem;
 }
-.container .fixture table tbody tr .teams .teams__logo {
+@media only screen and (max-width: 540px) {
+  .container #form .fixture table tbody tr .teams {
+    width: 20%;
+  }
+}
+.container #form .fixture table tbody tr .teams .teams__logo {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
 }
-.container .fixture table tbody tr .teams .teams__logo span {
+.container #form .fixture table tbody tr .teams .teams__logo span {
   width: 80%;
 }
-
-#form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+@media only screen and (max-width: 780px) {
+  .container #form .fixture table tbody tr .teams .teams__logo span {
+    width: 60%;
+  }
 }
-#form #send {
+@media only screen and (max-width: 540px) {
+  .container #form .fixture table tbody tr .teams .teams__logo span {
+    width: 60%;
+  }
+}
+.container #form .fixture table tbody tr .teams .teams__logo img {
+  margin: 0 5px;
+}
+@media only screen and (max-width: 780px) {
+  .container #form .fixture table tbody tr .teams .teams__logo img {
+    width: 20px;
+    margin: 0;
+  }
+}
+.container #form #send {
   padding: 0.7rem 1.3rem;
   background: #5CCF95;
-  margin-top: 2rem;
+  margin-bottom: 2rem;
   font-size: 17px;
   font-weight: 500;
   border: none;
@@ -111,10 +161,6 @@
   box-shadow: 1px 1px 2px #88ca6f;
   cursor: pointer;
 }
-#form #send:hover {
+.container #form #send:hover {
   background: #01b85c;
-}
-
-.selected-round {
-  display: table-row;
 }/*# sourceMappingURL=forecasts.css.map */

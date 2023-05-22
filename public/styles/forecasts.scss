@@ -16,102 +16,131 @@
     h1{
         font-size: 40px;
     }
-    #roundSelect{
-        width: 30%;
-        padding: .6rem 0;
-        margin: 2rem 0;
-        font-size: 17px;
-        padding-left: 10px;
-        outline: none;
-    }
-    .fixture{     
-        width: 70%;
-        max-width: 1280px;
-        margin-bottom: 2rem;
-        table{
-            @include flex(flex, center, center, column);
-            width: 100%;
-            thead{             
-                width: 100%;
-                background: #000000;
-                border-radius: 3px 3px 0 0;
-                tr{
-                    width: 100%;
-                    color: #EFEFEF;
-                    th{
-                        width: 4rem;                      
-                    }
-                    .date{
-                        width: 4.5rem;
-                    }
-                    .vs{
-                        width: 2rem;
-                    }
-                    .teams{
-                        width: 15rem;                        
-                    }
-                }
-            }
-            tbody{
-                width: 100%;
-                text-align: center;
-                tr{
-                    width: 100%;
-                    border-top: 1px solid #d2d1d1;
-                    &:hover{
-                        background: #5CCF95;
-                        border-radius: 3px;
-                    }
-                    td{
-                        width: 4rem;
-                        .input__cont{
-                            @include flex(flex, center, center, row);
-                            .forecasts{
-                                width: 3rem;
-                                text-align: center;
-                                outline: none;
-                            }                           
+    #form{
+        @include flex(flex, center, center, column);
+        #roundSelect{
+            width: 30%;
+            padding: .6rem 0;
+            margin: 2rem 0;
+            font-size: 17px;
+            padding-left: 10px;
+            outline: none;
+            @include media(540px){
+                width: 60%;
+                padding-left: 1.5rem;
+            } 
+        }
+        .fixture{     
+            max-width: 1280px;
+            margin-bottom: 2rem;
+            table{
+                @include flex(flex, center, center, column);
+                thead{             
+                    background: #000000;
+                    border-radius: 3px 3px 0 0;
+                    padding: .6rem 0;
+                    tr{
+                        color: #EFEFEF;
+                        @include media(){
+                            font-size: 15px;
+                        }
+                        th{
+                            width: 4rem;                  
+                        }
+                        .date{
+                            width: 4.5rem;
+                        }
+                        .vs{
+                            width: 2rem;
+                        }
+                        .teams{
+                            width: 15rem;
+                            @include media(540px){
+                                width: 4rem;
+                            }                         
                         }
                     }
-                    .date{
-                        width: 4.5rem;
-                    }
-                    .vs{
-                        width: 2rem;
-                    }
-                    .teams{
-                        width: 15rem;
-                        .teams__logo{
-                            @include flex(flex, space-between, center, row);
-                            span{
-                                width: 80%;
+                }
+                tbody{
+                    text-align: center;
+                    tr{
+                        border-top: 1px solid #d2d1d1;
+                        padding: .6rem 0;
+                        &:hover{
+                            background: #5CCF95;
+                            border-radius: 3px;
+                        }
+                        td{
+                            width: 4rem;                            
+                            @include media(){
+                                font-size: 15px;
+                            }
+                            .input__cont{
+                                @include flex(flex, center, center, row);
+                                .forecasts{
+                                    width: 3rem;
+                                    text-align: center;
+                                    outline: none;
+                                    @include media(540px){
+                                        width: 1.5rem;
+                                    }
+                                }                           
+                            }
+                        }
+                        .date{
+                            width: 4.5rem;
+                        }
+                        .vs{
+                            width: 2rem;
+                            @include media(540px){
+                                width: 1.5rem;
+                            } 
+                        }
+                        .teams{
+                            width: 15rem;
+                            @include media(540px){
+                                width: 20%;
+                            }
+                            .teams__logo{
+                                @include flex(flex, space-between, center, row);
+                                span{
+                                    width: 80%;
+                                    @include media(){
+                                        width: 60%;
+                                    }
+                                    @include media(540px){
+                                        width: 60%;
+                                    }
+                                }
+                                img{
+                                    margin: 0 5px;
+                                    @include media(){
+                                        width: 20px;
+                                        margin: 0;
+                                    }
+                                }
                             }
                         }
                     }
                 }
             }
         }
-    }
-}
-#form{
-    @include flex(flex, center, center, column);
-    #send{
-        padding: .7rem 1.3rem;
-        background: #5CCF95;
-        margin-top: 2rem;
-        font-size: 17px;
-        font-weight: 500;
-        border: none;
-        border-radius: 5px;
-        box-shadow: 1px 1px 2px #88ca6f;
-        cursor: pointer;
-        &:hover{
-            background: #01b85c;
+        #send{
+            padding: .7rem 1.3rem;
+            background: #5CCF95;
+            margin-bottom: 2rem;
+            font-size: 17px;
+            font-weight: 500;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 1px 1px 2px #88ca6f;
+            cursor: pointer;
+            &:hover{
+                background: #01b85c;
+            }
         }
     }
-
 }
-.selected-round {
-    display: table-row;
-  }
+
+
   

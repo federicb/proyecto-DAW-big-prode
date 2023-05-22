@@ -54,8 +54,8 @@ router.get('/pronosticos', async (req, res) =>{
 router.post('/enviar-datos', (req, res) => {
     const datos = req.body; // Obtener los datos enviados por el cliente
     console.log(datos);
-    // res.send('Datos recibidos correctamente');
-    res.redirect('/');
+    res.send('Datos recibidos correctamente');
+    // res.redirect('/');
   });
   
 
