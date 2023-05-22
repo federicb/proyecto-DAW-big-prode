@@ -19,9 +19,16 @@ app.use(express.json());
 app.use(logger('dev'));
 // app.use(cookieParser());
 
+// global variables
+app.use((req, res, next) => {
+
+    next();
+});
+
 //routes
 app.use(require('./routes/index.js'));
 app.use(require('./routes/futbol.js'));
+app.use(require('./routes/authentication.js'));
 
 
 

@@ -1,0 +1,43 @@
+@mixin flex( $display, $justify, $align, $direction){
+    display: $display;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $direction;
+}
+@mixin media($medida: 780px){
+    @media only screen and (max-width: $medida){
+        @content
+    }
+}
+
+.register__content{
+    @include flex(flex, center, center, column);
+    height: calc(100vh - 7rem - 26px);
+    .register__form{
+        @include flex(flex, space-between, center, column);
+        width: 30%;
+        padding: 2rem;
+        border-radius: 5px;
+        box-shadow: 1px 1px 4px #bebebe, -1px -1px 4px #bebebe;
+        input{
+            width: 90%;
+            padding: .6rem;
+            margin: .3rem;
+            outline: none;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 1px 1px 4px #bebebe, -1px -1px 4px #bebebe;
+        }
+        button{
+            padding: 0.5rem 3rem;
+            border-radius: 5px;
+            background: #5CCF95;
+            margin-top: 1rem;
+            cursor: pointer;
+            border: none;
+            box-shadow: 1px 1px 2px #88ca6f;
+            font-size: 16px;
+            font-weight: 600;
+        }
+    }
+}

@@ -1,0 +1,37 @@
+.register__content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: calc(100vh - 7rem - 26px);
+}
+.register__content .register__form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  width: 30%;
+  padding: 2rem;
+  border-radius: 5px;
+  box-shadow: 1px 1px 4px #bebebe, -1px -1px 4px #bebebe;
+}
+.register__content .register__form input {
+  width: 90%;
+  padding: 0.6rem;
+  margin: 0.3rem;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 4px #bebebe, -1px -1px 4px #bebebe;
+}
+.register__content .register__form button {
+  padding: 0.5rem 3rem;
+  border-radius: 5px;
+  background: #5CCF95;
+  margin-top: 1rem;
+  cursor: pointer;
+  border: none;
+  box-shadow: 1px 1px 2px #88ca6f;
+  font-size: 16px;
+  font-weight: 600;
+}/*# sourceMappingURL=register.css.map */
