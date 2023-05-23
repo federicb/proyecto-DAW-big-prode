@@ -6,6 +6,7 @@ const path = require('path');
 const session = require('express-session');
 // const {database} = require('./keys');
 const passport = require('passport');
+const flash = require('connect-flash');
 
 const pool = require('./connection')
 //initializations
@@ -25,6 +26,7 @@ app.use(session({
     saveUninitialized: false,
     store: new SQL_session({},pool)
 }))
+app.use(flash());
 app.use(morgan('dev'));
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
@@ -34,6 +36,7 @@ app.use(passport.session());
 // global variables
 app.use((req, res, next) => {
 
+    app.locals.user = req.user;
     next();
 });
 
@@ -47,21 +50,21 @@ app.use(require('./routes/authentication'));
 //static files
 app.use(express.static(path.join(__dirname, 'public')));
 
-// // catch 404 and forward to error handler
-// app.use(function(req, res, next) {
-//     next(createError(404));
-// });
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+    next(createError(404));
+});
   
-//  // error handler
-// app.use(function(err, req, res, next) {
-//     // set locals, only providing error in development
-//     res.locals.message = err.message;
-//     res.locals.error = req.app.get('env') === 'development' ? err : {};
+ // error handler
+app.use(function(err, req, res, next) {
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-//     // render the error page
-//     res.status(err.status || 500);
-//     res.render('error');
-// });
+    // render the error page
+    res.status(err.status || 500);
+    res.render('error');
+});
 
 //server
 app.listen(4000, () => {
