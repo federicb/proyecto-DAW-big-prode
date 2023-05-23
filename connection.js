@@ -1,6 +1,6 @@
 const mysql = require("mysql2/promise");
 
-const { dev_database } = require("./keys");
-const pool = mysql.createPool(dev_database);
+const { database } = require("./keys");
+const pool = mysql.createPool(database);
 
 module.exports = pool;
