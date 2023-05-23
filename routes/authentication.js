@@ -13,6 +13,10 @@ router.post('/register', passport.authenticate('local.signup', {
     failureFlash: true
 }))
 
+router.get('/login', (req,res) => {
+    res.render('auth/login')
+})
+
 
 router.get('/profile', (req,res) => {
     res.send('perfil')

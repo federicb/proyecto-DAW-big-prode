@@ -25,6 +25,10 @@ passport.use('local.signup', new localStrategy({
 
 }));
 
+// passport.use('local.signin', new localStrategy({
+
+// }));
+
 passport.serializeUser((user, done) => {
     done(null, user.id)
 });
