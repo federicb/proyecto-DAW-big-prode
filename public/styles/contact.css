@@ -6,7 +6,9 @@
   background-image: url("/images/contact.jpg");
   background-position: center;
   background-size: cover;
-  height: calc(100vh - 7rem - 26px);
+  height: calc(100vh - 7rem - 23px);
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 .contact .con__tittle {
   width: 80%;

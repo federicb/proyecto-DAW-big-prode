@@ -4,6 +4,22 @@ const router = express.Router();
 const passport = require('passport');
 const { isLoggedIn, isNotLoggedIn } = require('../config/auth')
 
+// rastrear ultima actividad del usuario
+router.use((req, res, next) => {
+    if (req.session && req.session.lastActivity) {
+        const now = Date.now();
+        const idleTimeout = 10 * 60 * 1000; // 2 minutos en milisegundos
+        //si supera 10 min de inactividad activa logout
+        if (now - req.session.lastActivity > idleTimeout) {
+            req.logout();
+            return res.redirect('/login');
+        }
+    }
+  
+    req.session.lastActivity = Date.now();
+    next();
+});
+
 router.get('/register', isNotLoggedIn, (req,res) => {
     res.render('auth/register')
 });

@@ -3,6 +3,7 @@ dotenv.config()
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
+const cookieParser = require('cookie-parser');
 const session = require('express-session');
 // const {database} = require('./keys');
 const passport = require('passport');
@@ -24,14 +25,19 @@ app.use(session({
     secret: 'bigbig',
     resave: false,
     saveUninitialized: false,
-    store: new SQL_session({},pool)
-}))
+    store: new SQL_session({},pool),
+    cookie: {
+        maxAge: 600000, // 10 minutos en milisegundos
+      }
+}));
 app.use(flash());
 app.use(morgan('dev'));
+app.use(cookieParser());
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 app.use(passport.initialize());
 app.use(passport.session());
+
 
 // global variables
 app.use((req, res, next) => {
