@@ -41,7 +41,8 @@ app.use(passport.session());
 
 // global variables
 app.use((req, res, next) => {
-
+    app.locals.success = req.flash('success');
+    app.locals.message = req.flash('message');
     app.locals.user = req.user;
     next();
 });
@@ -73,6 +74,6 @@ app.use(function(err, req, res, next) {
 });
 
 //server
-app.listen(4000, () => {
-    console.log("Server on port 4000");
+app.listen(3000, () => {
+    console.log("Server on port 3000");
 });
