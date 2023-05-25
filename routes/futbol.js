@@ -41,8 +41,8 @@ router.get('/pronosticos', async (req, res) =>{
         const currentDate = new Date().toISOString().split('T')[0];
         // console.log(currentDate)
 
-        res.json(filteredMatches)
-        // res.render('forecasts', { currentDate, matches: filteredMatches });
+        // res.json(filteredMatches)
+        res.render('forecasts', { currentDate, matches: filteredMatches });
 
 
     } catch (err) {
@@ -51,12 +51,52 @@ router.get('/pronosticos', async (req, res) =>{
     }
 });
 
+
 router.post('/enviar-datos', (req, res) => {
-    const datos = req.body; // Obtener los datos enviados por el cliente
-    console.log(datos);
+    const datos = req.body; 
+    // console.log(datos); 
+    // console.log(datos.round);
+    const round = datos.round;
+    //busca la pocision de ' - ' +2(espacio) y luego con substring el valor del round
+    const roundNumber = round.substring(round.indexOf('-') + 2);
+
+    console.log('Round:', roundNumber); 
+    
+    const processed_matches = {};
+    
+    for (const key in datos) {
+      if (key.startsWith('forecasts')) {
+        const fixtureId = key.match(/\[(.*?)\]/)[1];
+    
+        // verifica si el partido ya fue procesado
+        if (processed_matches[fixtureId]) {
+          continue; // omite segunda aparicion del partido
+        }
+    
+        // marca partido como procesado
+        processed_matches[fixtureId] = true;
+    
+        // obtiene pronostico local y visitante
+        const localKey = `forecasts[${fixtureId}][local]`;
+        const awayKey = `forecasts[${fixtureId}][away]`;
+        const local = datos[localKey];
+        const away = datos[awayKey];
+    
+        console.log(`Pronostico partido ${fixtureId}: Local: ${local}, Visitante: ${away}`);
+      }
+    }
+  
     res.send('Datos recibidos correctamente');
     // res.redirect('/');
   });
   
+  
+  
+  
+  
+  
+  
 
 module.exports = router;
+
+
