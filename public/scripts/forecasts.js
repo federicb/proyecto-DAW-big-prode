@@ -8,7 +8,9 @@ document.addEventListener('DOMContentLoaded', function() {
         filterMatches(selectedRound);
     });
 
+
 });
+
 
 // envia toda la fase
 // function filterMatches(selectedRound) {
@@ -66,7 +68,6 @@ function validarNumeros(event) {
 }
 
 
-
 //     // const data = {
 //     //     round: roundValue,
 //     //     forecasts: []
@@ -80,6 +81,7 @@ function validarNumeros(event) {
 //         // data.forecasts.push({ IDnameForecast, userValue });
 //         formData.append(input.name, input.value);
 //     });
+
 
 
 
@@ -99,7 +101,7 @@ document.querySelector('form').addEventListener('submit', function(event) {
     });
 
     // Renvio datos al servidor
-    fetch('/enviar-datos', {
+    fetch('/add', {
         method: 'POST',
         headers: {
         'Content-Type': 'application/json'
@@ -118,7 +120,7 @@ document.querySelector('form').addEventListener('submit', function(event) {
         // Respuesta del servidor
         console.log(data);
         // Realiza redireccionamiento en el lado del servidor
-        // window.location.href = '/';
+        window.location.href = '/';
     })
     .catch(function(error) {
 

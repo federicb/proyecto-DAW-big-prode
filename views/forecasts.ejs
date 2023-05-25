@@ -19,7 +19,7 @@
     <%- include('./partials/navigation.ejs') %>
     <div class="container">
         <h1>Pronósticos</h1>
-        <form id="form" action="/enviar-datos" method="POST">
+        <form id="form" action="/add" method="POST">
             <select id="roundSelect" name="round" onchange="filterMatches()">
                 <% for(let i = 1; i <= matches.length/14; i++) { %>
                 <option value="<%= `1st Phase - ${i}` %>">Fecha <%= i %></option>
@@ -51,15 +51,14 @@
                                     <td class="teams"><div class="teams__logo"><img style="width: 25px;" src="<%= matches[i].teams.home.logo %>" alt=""><span><%= matches[i].teams.home.name %></span></div></td>
                                     <td>
                                         <div class="input__cont">
-                                            <input type="text" maxlength="2" oninput="validarNumeros(event)" id="localF-<%= matches[i].fixture.id %>" class="forecasts" name="forecasts[<%= matches[i].fixture.id %>][local]" value="">
+                                            <input type="text" maxlength="2" oninput="validarNumeros(event)" id="localF-<%= matches[i].fixture.id %>" class="forecasts <%= matches[i].fixture.id %>" name="forecasts[<%= matches[i].fixture.id %>][local]" value="">
                                         </div>
                                         </div>
                                     </td>
                                     <td class="vs">-</td>
                                     <td>
                                         <div class="input__cont">
-                                            <input type="text" maxlength="2" oninput="validarNumeros(event)" id="awayF-<%= matches[i].fixture.id %>" class="forecasts" name="forecasts[<%= matches[i].fixture.id %>][away]" value="">
-                                            
+                                            <input type="text" maxlength="2" oninput="validarNumeros(event)" id="awayF-<%= matches[i].fixture.id %>" class="forecasts <%= matches[i].fixture.id %>" name="forecasts[<%= matches[i].fixture.id %>][away]" value="">                
                                         </div>
                                     </td>
                                     <td class="teams"><div class="teams__logo"><span><%= matches[i].teams.away.name %></span><img style="width: 25px;" src="<%= matches[i].teams.away.logo %>" alt=""></div></td>
@@ -77,7 +76,8 @@
     <!-- FOOTER -->
     <%- include('./partials/footer.ejs') %>
 
-    <script src="/scripts/forecasts.js"></script>
+    <script src="/scripts/forecasts.js"></script>  
+    
 
 </body>
 </html>

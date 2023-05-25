@@ -1,7 +1,7 @@
 const passport = require('passport');
 const localStrategy = require('passport-local').Strategy;
-const pool = require('../connection')
-const helpers = require('../config/helpers')
+const pool = require('../connection');
+const helpers = require('../config/helpers');
 
 
 // register strategy
