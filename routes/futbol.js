@@ -41,8 +41,8 @@ router.get('/pronosticos', async (req, res) =>{
         const currentDate = new Date().toISOString().split('T')[0];
         // console.log(currentDate)
 
-        // res.json(filteredMatches)
-        res.render('forecasts', { currentDate, matches: filteredMatches });
+        res.json(filteredMatches)
+        // res.render('forecasts', { currentDate, matches: filteredMatches });
 
 
     } catch (err) {
