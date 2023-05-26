@@ -49,10 +49,15 @@
                                       <%= md.replace(",", "")  %>
                                     </td>
                                    
-                                    <td class="teams"><div class="teams__logo"><img style="width: 25px;" src="<%= matches[i].teams.home.logo %>" alt=""><span><%= matches[i].teams.home.name %></span></div></td>
+                                    <td class="teams">
+                                        <div class="teams__logo">
+                                            <img style="width: 25px;" src="<%= matches[i].teams.home.logo %>" alt="">
+                                            <span><%= matches[i].teams.home.name %></span>
+                                        </div>
+                                    </td>
                                     
                                     <td class="vs">
-                                        <span id="localF-<%= matches[i].fixture.id %>" class="<%= matches[i].fixture.id %>"> 
+                                        <span id="localF-<%= matches[i].fixture.id %>" class=""> 
                                             <% for (let j = 0; j < userForecasts.length; j++) { %>
                                                 <% if (userForecasts[j].id_fixture === matches[i].fixture.id) { %>
                                                     <%= userForecasts[j].f_goal_local %>
@@ -64,7 +69,7 @@
                                     <td class="vs">-</td>
                                    
                                     <td class="vs">
-                                        <span id="awayR-<%= matches[i].fixture.id %>" class="<%= matches[i].fixture.id %>"> 
+                                        <span id="awayR-<%= matches[i].fixture.id %>" class=""> 
                                             <% for (let j = 0; j < userForecasts.length; j++) { %>
                                                 <% if (userForecasts[j].id_fixture === matches[i].fixture.id) { %>
                                                     <%= userForecasts[j].f_goal_away %>
@@ -73,11 +78,22 @@
                                         </span>
                                     </td>
                                    
-                                    <td class="teams"><div class="teams__logo"><span><%= matches[i].teams.away.name %></span><img style="width: 25px;" src="<%= matches[i].teams.away.logo %>" alt=""></div></td>
+                                    <td class="teams">
+                                        <div class="teams__logo">
+                                            <span><%= matches[i].teams.away.name %></span>
+                                            <img style="width: 25px;" src="<%= matches[i].teams.away.logo %>" alt="">
+                                        </div>
+                                    </td>
                                    
-                                    <td><span id="localR-<%= i+1 %>"><%= matches[i].goals.home %></span> - <span id="awayR-<%= i+1 %>"><%= matches[i].goals.away %></span></td>
+                                    <td>
+                                        <span id="localR-<%= matches[i].fixture.id %>"><%= matches[i].goals.home %></span>
+                                            - 
+                                        <span id="awayR-<%= matches[i].fixture.id %>"><%= matches[i].goals.away %></span>
+                                    </td>
                                    
-                                    <td class="vs"><span></span></td>
+                                    <td class="vs">
+                                        <span id="PTS<%= matches[i].goals.home %>"></span>
+                                    </td>
                                 </tr>
                             <% } %>
                         <% } %>

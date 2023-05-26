@@ -42,8 +42,6 @@ router.get('/fore', isLoggedIn, async (req, res) =>{
         const currentDate = new Date().toISOString().split('T')[0];
         // console.log(currentDate)
 
-        
-
         // res.json(filteredMatches)
         res.render('forecasts', { 
             matches: filteredMatches, 
@@ -136,13 +134,7 @@ router.get('/myfore', isLoggedIn, async (req, res) => {
         res.status(500).send("Error al obtener las pronósticos");
     }
 });
-
-    // const [userForecasts] = await pool.query('SELECT * FROM forecasts');
-    // console.log(userForecasts);
-    // res.render('my_forecasts', { userForecasts });
-// });
-
-  
+ 
   
 
 module.exports = router;

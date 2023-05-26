@@ -12,23 +12,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-
-// envia toda la fase
-// function filterMatches(selectedRound) {
-//     const matchResults = document.querySelectorAll('.match-result');
-
-//     for (let i = 0; i < matchResults.length; i++) {
-//         const matchRound = matchResults[i].getAttribute('data-round');
-//         if (matchRound === selectedRound) {
-//             matchResults[i].classList.add('selected-round');
-//             matchResults[i].style.display = 'block';
-//         } else {
-//             matchResults[i].classList.remove('selected-round');
-//             matchResults[i].style.display = 'none';
-//         }
-//     }
-// }
-
 // agraga clase select-round a todos los inputs segun el round
 function filterMatches(selectedRound) {
     const matchResults = document.querySelectorAll('.match-result');
@@ -67,23 +50,6 @@ function validarNumeros(event) {
     const input = event.target.value;
     event.target.value = input.replace(/[^0-9]/g, '');
 }
-
-
-//     // const data = {
-//     //     round: roundValue,
-//     //     forecasts: []
-//     // };
-//     const formData = new FormData();
-//     formData.append('round', roundValue);
-
-//     selectedInputs.forEach(input => {
-//         const IDnameForecast = input.name;
-//         const userValue = input.value;
-//         // data.forecasts.push({ IDnameForecast, userValue });
-//         formData.append(input.name, input.value);
-//     });
-
-
 
 
 document.querySelector('form').addEventListener('submit', function(event) {
