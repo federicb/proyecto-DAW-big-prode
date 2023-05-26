@@ -7,7 +7,8 @@
     <ul class="nav__list">
         <li><a class="nav__btn" href="/contact">Contacto</a></li>
         <% if (user) { %>
-            <li><a class="nav__btn nav__btn--login" href="/logout">Cerrar sesión</a></li>         
+            <li><a class="nav__btn" href="/profile">Mi Perfil</a></li>      
+            <li><a class="nav__btn nav__btn--login" href="/logout">Cerrar sesión</a></li>   
         <% } else { %>
         <li><a class="nav__btn" href="/register">Registro</a></li>
         <li><a class="nav__btn nav__btn--login" href="/login">Ingresar</a></li>

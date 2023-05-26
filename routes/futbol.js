@@ -3,7 +3,7 @@ const router = Router();
 
 const pool = require('../connection');
 
-router.get('/posiciones', async (req, res) =>{
+router.get('/positions', async (req, res) =>{
     
     try {
         const response = await fetch("https://v3.football.api-sports.io/standings?league=128&season=2023", {
@@ -25,7 +25,7 @@ router.get('/posiciones', async (req, res) =>{
 });
 
 // fixtures?league=128&season=2023&round=1st Phase - 9
-router.get('/pronosticos', async (req, res) =>{
+router.get('/fore', async (req, res) =>{
     
     try {
         const response = await fetch("https://v3.football.api-sports.io/fixtures?league=128&season=2023", {
@@ -42,12 +42,11 @@ router.get('/pronosticos', async (req, res) =>{
         const currentDate = new Date().toISOString().split('T')[0];
         // console.log(currentDate)
 
-        const userForecasts = await pool.query('SELECT * FROM forecasts');
+        
 
         // res.json(filteredMatches)
         res.render('forecasts', { 
             matches: filteredMatches, 
-            userForecasts,
             currentDate
          });
 
@@ -104,8 +103,43 @@ router.post('/add', async (req, res) => {
     }
   
     // res.send('Datos recibidos correctamente');
-    res.redirect('/');
-  });  
+    // res.redirect('/');
+});  
+
+router.get('/myfore', async (req, res) => {
+
+    try {
+        const response = await fetch("https://v3.football.api-sports.io/fixtures?league=128&season=2023", {
+            method: "GET",
+            headers: {
+                "x-rapidapi-host": "v3.football.api-sports.io",
+                "x-rapidapi-key": process.env.API_KEY
+            }
+        });
+        const data = await response.json();
+
+        const filteredMatches = data.response.filter(match => match.league.round.includes('1st Phase'));
+        
+        const [userForecasts] = await pool.query('SELECT * FROM forecasts');
+        console.log(userForecasts);
+
+        // res.json(filteredMatches)
+        res.render('my_forecasts', { 
+            matches: filteredMatches, 
+            userForecasts
+         });
+
+
+    } catch (err) {
+        console.log(err);
+        res.status(500).send("Error al obtener las pronósticos");
+    }
+});
+
+    // const [userForecasts] = await pool.query('SELECT * FROM forecasts');
+    // console.log(userForecasts);
+    // res.render('my_forecasts', { userForecasts });
+// });
 
   
   
