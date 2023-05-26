@@ -104,7 +104,7 @@ router.post('/add', isLoggedIn, async (req, res) => {
     }
   
     // res.send('Datos recibidos correctamente');
-    // res.redirect('/');
+    res.redirect('/myfore');
 });  
 
 router.get('/myfore', isLoggedIn, async (req, res) => {

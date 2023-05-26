@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+
 // envia toda la fase
 // function filterMatches(selectedRound) {
 //     const matchResults = document.querySelectorAll('.match-result');
@@ -120,7 +121,7 @@ document.querySelector('form').addEventListener('submit', function(event) {
         // Respuesta del servidor
         console.log(data);
         // Realiza redireccionamiento en el lado del servidor
-        window.location.href = '/';
+        window.location.href = '/myfore';
     })
     .catch(function(error) {
 
