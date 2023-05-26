@@ -1,6 +1,6 @@
 const {Router} = require('express');
 const router = Router();
-
+const { isLoggedIn, isNotLoggedIn } = require('../config/auth');
 const pool = require('../connection');
 
 router.get('/positions', async (req, res) =>{
@@ -25,7 +25,7 @@ router.get('/positions', async (req, res) =>{
 });
 
 // fixtures?league=128&season=2023&round=1st Phase - 9
-router.get('/fore', async (req, res) =>{
+router.get('/fore', isLoggedIn, async (req, res) =>{
     
     try {
         const response = await fetch("https://v3.football.api-sports.io/fixtures?league=128&season=2023", {
@@ -58,7 +58,7 @@ router.get('/fore', async (req, res) =>{
 });
 
 
-router.post('/add', async (req, res) => {
+router.post('/add', isLoggedIn, async (req, res) => {
     const datos = req.body; 
     // console.log(datos); 
     // console.log(datos.round);
@@ -106,7 +106,7 @@ router.post('/add', async (req, res) => {
     // res.redirect('/');
 });  
 
-router.get('/myfore', async (req, res) => {
+router.get('/myfore', isLoggedIn, async (req, res) => {
 
     try {
         const response = await fetch("https://v3.football.api-sports.io/fixtures?league=128&season=2023", {

@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const passport = require('passport');
-const { isLoggedIn, isNotLoggedIn } = require('../config/auth')
+const { isLoggedIn, isNotLoggedIn } = require('../config/auth');
 
 // rastrear ultima actividad del usuario
 router.use((req, res, next) => {
