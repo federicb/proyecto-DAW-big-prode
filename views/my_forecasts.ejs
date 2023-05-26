@@ -92,7 +92,13 @@
                                     </td>
                                    
                                     <td class="vs">
-                                        <span id="PTS<%= matches[i].goals.home %>"></span>
+                                        <% for( let index = 0; index < userForecasts.length; index++ ) { %>
+                                            <% if (userForecasts[index].id_fixture === matches[i].fixture.id) { %>
+                                                <% const calcs = calculate.calculateResults(userForecasts[index].f_goal_local, matches[i].goals.home, userForecasts[index].f_goal_away, matches[i].goals.away); %>
+
+                                                <span id="PTS<%= matches[i].fixture.id %>"> <%= calcs %> </span>
+                                            <% } %>
+                                        <% } %>
                                     </td>
                                 </tr>
                             <% } %>
@@ -105,8 +111,9 @@
     <!-- FOOTER -->
     <%- include('./partials/footer.ejs') %>
 
-    <script src="/scripts/forecasts.js"></script>  
-
+      
+    <script src="/scripts/forecasts.js"></script>      
+    
 
 </body>
 </html>

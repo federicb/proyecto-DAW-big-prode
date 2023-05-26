@@ -1,6 +1,7 @@
 const {Router} = require('express');
 const router = Router();
 const { isLoggedIn } = require('../config/auth');
+const calculate = require('../config/calcs');
 const pool = require('../connection');
 
 router.get('/positions', async (req, res) =>{
@@ -125,7 +126,8 @@ router.get('/myfore', isLoggedIn, async (req, res) => {
         // res.json(filteredMatches)
         res.render('my_forecasts', { 
             matches: filteredMatches, 
-            userForecasts
+            userForecasts,
+            calculate: calculate          
          });
 
 

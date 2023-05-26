@@ -1,42 +1,54 @@
 document.addEventListener('DOMContentLoaded', function() {
+
+    
     const roundSelect = document.getElementById('roundSelect');
     let selectedRound = roundSelect.value;
     filterMatches(selectedRound);
-
+    
     roundSelect.addEventListener('change', function() {
         selectedRound = roundSelect.value;
         filterMatches(selectedRound);
     });
-
-
+    
+    
 });
 
 
 // agraga clase select-round a todos los inputs segun el round
 function filterMatches(selectedRound) {
     const matchResults = document.querySelectorAll('.match-result');
-
+    
     for (let i = 0; i < matchResults.length; i++) {
         const matchRound = matchResults[i].getAttribute('data-round');
         const inputs = matchResults[i].querySelectorAll('.forecasts');
-
+        
         if (matchRound === selectedRound) {
             // matchResults[i].classList.add('selected-round');
             matchResults[i].style.display = 'block';
-
+            
             for (let j = 0; j < inputs.length; j++) {
-            inputs[j].classList.add('selected-round');
+                inputs[j].classList.add('selected-round');
             }
         } else {
             // matchResults[i].classList.remove('selected-round');
             matchResults[i].style.display = 'none';
-
+            
             for (let j = 0; j < inputs.length; j++) {
-            inputs[j].classList.remove('selected-round');
+                inputs[j].classList.remove('selected-round');
             }
         }
     }
 }
+
+// function calculateResults(f_goal_local, f_goal_away, goals_home, goals_away) {
+//     // calculo de puntos
+//     const suma = f_goal_local + goals_home;
+//     const multiplicacion = f_goal_away * goals_away;
+//     const calcs = multiplicacion - suma;
+    
+//     return calcs;
+
+// }
 
 function formatDate(date) {
     const day = String(date.getDate()).padStart(2, '0');
