@@ -1,6 +1,6 @@
 const {Router} = require('express');
 const router = Router();
-const { isLoggedIn, isNotLoggedIn } = require('../config/auth');
+const { isLoggedIn } = require('../config/auth');
 const pool = require('../connection');
 
 router.get('/positions', async (req, res) =>{
@@ -95,7 +95,8 @@ router.post('/add', isLoggedIn, async (req, res) => {
                 id_fixture,
                 f_goal_local,
                 f_goal_away,
-                id_round
+                id_round,
+                id_user: req.user.id
             };
             // console.log(newForecast);
             await pool.query('INSERT INTO forecasts SET ?', [newForecast]);
@@ -120,7 +121,7 @@ router.get('/myfore', isLoggedIn, async (req, res) => {
 
         const filteredMatches = data.response.filter(match => match.league.round.includes('1st Phase'));
         
-        const [userForecasts] = await pool.query('SELECT * FROM forecasts');
+        const [userForecasts] = await pool.query('SELECT * FROM forecasts WHERE id_user = ?', [req.user.id]);
         console.log(userForecasts);
 
         // res.json(filteredMatches)
