@@ -26,7 +26,7 @@ router.get('/positions', async (req, res) =>{
 });
 
 // fixtures?league=128&season=2023&round=1st Phase - 9
-router.get('/fore', isLoggedIn, async (req, res) =>{
+router.get('/forecasts', isLoggedIn, async (req, res) =>{
     
     try {
         const response = await fetch("https://v3.football.api-sports.io/fixtures?league=128&season=2023", {
@@ -103,10 +103,10 @@ router.post('/add', isLoggedIn, async (req, res) => {
     }
   
     // res.send('Datos recibidos correctamente');
-    // res.redirect('/myfore');
+    res.redirect('/myforecasts');
 });  
 
-router.get('/myfore', isLoggedIn, async (req, res) => {
+router.get('/myforecasts', isLoggedIn, async (req, res) => {
 
     try {
         const response = await fetch("https://v3.football.api-sports.io/fixtures?league=128&season=2023", {

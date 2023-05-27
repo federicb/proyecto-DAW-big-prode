@@ -99,7 +99,7 @@ document.querySelector('form').addEventListener('submit', function(event) {
         // Respuesta del servidor
         console.log(data);
         // Realiza redireccionamiento en el lado del servidor
-        // window.location.href = '/myfore';
+        window.location.href = '/myforecasts';
     })
     .catch(function(error) {
 
