@@ -40,6 +40,8 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <!-- ordena los partidos por fecha en orden ascendente -->
+                        <% matches.sort((a, b) => new Date(a.fixture.date) - new Date(b.fixture.date)); %>
                         <% for (let i = 0; i < matches.length; i++) { %>
                             <% if (matches[i].league.round.includes('1st Phase')) { %>
                                 <tr class="match-result" data-round="<%= matches[i].league.round %>">
@@ -56,14 +58,22 @@
                                     </td>
                                     <td>
                                         <div class="input__cont">
-                                            <input type="text" maxlength="2" oninput="validarNumeros(event)" id="localF-<%= matches[i].fixture.id %>" class="forecasts" name="forecasts[<%= matches[i].fixture.id %>][local]" value="">
+                                            <% if ( matchDate < new Date() ) { %>
+                                                <input type="text" maxlength="2" oninput="validarNumeros(event)" id="localF-<%= matches[i].fixture.id %>" class="forecasts" name="forecasts[<%= matches[i].fixture.id %>][local]" value="" disabled>                                                                                         
+                                              <% } else { %>
+                                                <input type="text" maxlength="2" oninput="validarNumeros(event)" id="localF-<%= matches[i].fixture.id %>" class="forecasts" name="forecasts[<%= matches[i].fixture.id %>][local]" value="">                                               
+                                              <% } %>
                                         </div>
                                         </div>
                                     </td>
                                     <td class="vs">-</td>
                                     <td>
                                         <div class="input__cont">
-                                            <input type="text" maxlength="2" oninput="validarNumeros(event)" id="awayF-<%= matches[i].fixture.id %>" class="forecasts" name="forecasts[<%= matches[i].fixture.id %>][away]" value="">                
+                                            <% if ( matchDate < new Date() ) { %>
+                                                <input type="text" maxlength="2" oninput="validarNumeros(event)" id="awayF-<%= matches[i].fixture.id %>" class="forecasts" name="forecasts[<%= matches[i].fixture.id %>][away]" value="" disabled>                
+                                            <% } else { %>
+                                                <input type="text" maxlength="2" oninput="validarNumeros(event)" id="awayF-<%= matches[i].fixture.id %>" class="forecasts" name="forecasts[<%= matches[i].fixture.id %>][away]" value="">                
+                                            <% } %>
                                         </div>
                                     </td>
                                     <td class="teams">

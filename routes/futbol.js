@@ -39,16 +39,13 @@ router.get('/fore', isLoggedIn, async (req, res) =>{
         const data = await response.json();
 
         const filteredMatches = data.response.filter(match => match.league.round.includes('1st Phase'));
+
         // fecha actual
-        const actual = new Date();
-        const currentDate = new Date().toISOString().split('T')[0];
-        console.log("Actual:", actual);
+        // const currentDate = new Date();
+        // const dateFormat = new Date().toISOString().split('T')[0];
 
         // res.json(filteredMatches)
-        res.render('forecasts', { 
-            matches: filteredMatches, 
-            currentDate
-         });
+        res.render('forecasts', { matches: filteredMatches });
 
 
     } catch (err) {

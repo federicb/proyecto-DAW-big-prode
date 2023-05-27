@@ -40,6 +40,8 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <!-- ordena los partidos por fecha en orden ascendente -->
+                        <% matches.sort((a, b) => new Date(a.fixture.date) - new Date(b.fixture.date)); %>
                         <% for (let i = 0; i < matches.length; i++) { %>
                             <% if (matches[i].league.round.includes('1st Phase')) { %>
                                 <tr class="match-result" data-round="<%= matches[i].league.round %>">
