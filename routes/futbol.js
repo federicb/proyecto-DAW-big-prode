@@ -85,8 +85,10 @@ router.post('/add', isLoggedIn, async (req, res) => {
             // obtiene pronostico local y visitante
             const localKey = `forecasts[${id_fixture}][local]`;
             const awayKey = `forecasts[${id_fixture}][away]`;
-            const f_goal_local = datos[localKey];
-            const f_goal_away = datos[awayKey];
+            const f_goal_local = datos[localKey] !== '' ? datos[localKey] : null;
+            const f_goal_away = datos[awayKey] !== '' ? datos[awayKey] : null;
+            // const f_goal_local = datos[localKey];
+            // const f_goal_away = datos[awayKey];
         
             // console.log(`Pronostico partido ${id_fixture}: Local: ${f_goal_local}, Visitante: ${f_goal_away}`);
             
@@ -103,7 +105,7 @@ router.post('/add', isLoggedIn, async (req, res) => {
     }
   
     // res.send('Datos recibidos correctamente');
-    res.redirect('/myfore');
+    // res.redirect('/myfore');
 });  
 
 router.get('/myfore', isLoggedIn, async (req, res) => {
@@ -121,7 +123,7 @@ router.get('/myfore', isLoggedIn, async (req, res) => {
         const filteredMatches = data.response.filter(match => match.league.round.includes('1st Phase'));
         
         const [userForecasts] = await pool.query('SELECT * FROM forecasts WHERE id_user = ?', [req.user.id]);
-        console.log(userForecasts);
+        // console.log(userForecasts);
 
         // res.json(filteredMatches)
         res.render('my_forecasts', { 

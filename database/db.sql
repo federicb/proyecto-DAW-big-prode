@@ -15,13 +15,14 @@ CREATE TABLE forecasts (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     id_round INT NOT NULL,
     id_fixture INT NOT NULL,
-    f_goal_local INT NOT NULL,
-    f_goal_away INT NOT NULL,
+    f_goal_local INT,
+    f_goal_away INT,
     pts INT,
     id_user INT UNSIGNED,
     CONSTRAINT fk_user FOREIGN KEY(id_user) REFERENCES users(id),
     CONSTRAINT UC_forecasts UNIQUE (id, id_user)
 );
+
 
 -- GROUPS TABLE
 CREATE TABLE `groups` (
@@ -31,9 +32,9 @@ CREATE TABLE `groups` (
 
 -- INTERMEDIATE TABLE USERS - GROUPS
 CREATE TABLE users_groups (
-  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-  id_user INT UNSIGNED,
-  id_group INT UNSIGNED,
-  FOREIGN KEY (id_user) REFERENCES users(id),
-  FOREIGN KEY (id_group) REFERENCES `groups`(id)
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    id_user INT UNSIGNED,
+    id_group INT UNSIGNED,
+    FOREIGN KEY (id_user) REFERENCES users(id),
+    FOREIGN KEY (id_group) REFERENCES `groups`(id)
 );

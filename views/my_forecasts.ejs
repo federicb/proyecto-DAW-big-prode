@@ -94,9 +94,8 @@
                                     <td class="vs">
                                         <% for( let index = 0; index < userForecasts.length; index++ ) { %>
                                             <% if (userForecasts[index].id_fixture === matches[i].fixture.id) { %>
-                                                <% const calcs = calculate.calculateResults(userForecasts[index].f_goal_local, matches[i].goals.home, userForecasts[index].f_goal_away, matches[i].goals.away); %>
-
-                                                <span id="PTS<%= matches[i].fixture.id %>"> <%= calcs %> </span>
+                                                <% const points = calculate.calculateResults(userForecasts[index].f_goal_local, userForecasts[index].f_goal_away, matches[i].goals.home, matches[i].goals.away); %>
+                                                <span id="PTS<%= matches[i].fixture.id %>"> <%= points %> </span>
                                             <% } %>
                                         <% } %>
                                     </td>
