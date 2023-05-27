@@ -40,8 +40,9 @@ router.get('/fore', isLoggedIn, async (req, res) =>{
 
         const filteredMatches = data.response.filter(match => match.league.round.includes('1st Phase'));
         // fecha actual
+        const actual = new Date();
         const currentDate = new Date().toISOString().split('T')[0];
-        // console.log(currentDate)
+        console.log("Actual:", actual);
 
         // res.json(filteredMatches)
         res.render('forecasts', { 
@@ -125,7 +126,7 @@ router.get('/myfore', isLoggedIn, async (req, res) => {
         const [userForecasts] = await pool.query('SELECT * FROM forecasts WHERE id_user = ?', [req.user.id]);
         // console.log(userForecasts);
 
-        // res.json(filteredMatches)
+        // res.json(filteredMatches);
         res.render('my_forecasts', { 
             matches: filteredMatches, 
             userForecasts,
