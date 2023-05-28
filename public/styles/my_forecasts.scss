@@ -31,6 +31,7 @@
     .fixture{     
         max-width: 1280px;
         margin-bottom: 2rem;
+        @include flex(flex, center, center, column);
         table{
             @include flex(flex, center, center, column);
             width: 100%;
@@ -123,6 +124,15 @@
                         }
                     }
                 }
+            }
+        }
+        .round__points{
+            background: #D1EECA;
+            padding: .7rem;
+            margin-top: 1.5rem;
+            border-radius: 3px;
+            #points__round{
+                font-size: 17px;
             }
         }
     }

@@ -25,6 +25,10 @@
 .container .fixture {
   max-width: 1280px;
   margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 .container .fixture table {
   display: flex;
@@ -146,4 +150,13 @@
     width: 20px;
     margin: 0;
   }
+}
+.container .fixture .round__points {
+  background: #D1EECA;
+  padding: 0.7rem;
+  margin-top: 1.5rem;
+  border-radius: 3px;
+}
+.container .fixture .round__points #points__round {
+  font-size: 17px;
 }/*# sourceMappingURL=my_forecasts.css.map */

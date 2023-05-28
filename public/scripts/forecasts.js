@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // agraga clase select-round a todos los inputs segun el round
 function filterMatches(selectedRound) {
     const matchResults = document.querySelectorAll('.match-result');
-    
+
     for (let i = 0; i < matchResults.length; i++) {
         const matchRound = matchResults[i].getAttribute('data-round');
         const inputs = matchResults[i].querySelectorAll('.forecasts');
@@ -38,6 +38,7 @@ function filterMatches(selectedRound) {
             }
         }
     }
+
 }
 
 // function calculateResults(f_goal_local, f_goal_away, goals_home, goals_away) {
