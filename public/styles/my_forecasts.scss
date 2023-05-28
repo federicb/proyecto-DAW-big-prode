@@ -34,6 +34,7 @@
         table{
             @include flex(flex, center, center, column);
             width: 100%;
+            font-weight: 300;
             thead{             
                 background: #000000;
                 border-radius: 3px 3px 0 0;
@@ -47,7 +48,7 @@
                         width: 4rem;                  
                     }
                     .date{
-                        width: 4.5rem;
+                        width: 4rem;
                     }
                     .vs{
                         width: 2rem;
@@ -88,7 +89,7 @@
                         }
                     }
                     .date{
-                        width: 4.5rem;
+                        width: 4.3rem;
                     }
                     .vs{
                         width: 2rem;

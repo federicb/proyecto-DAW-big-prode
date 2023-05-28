@@ -23,6 +23,7 @@
         display: flex;
         h1{
             color: #EEF1EF;
+            font-weight: 300;
         }
     }
     .contact__form{
@@ -46,18 +47,18 @@
                     color: gold;
                     &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
                         color: #EEF1EF;
-                        font-weight: 600;
+                        font-weight: 400;
                         opacity: 1; /* Firefox */
                       }
                       
                       &:-ms-input-placeholder { /* Internet Explorer 10-11 */
                         color: #EEF1EF;
-                        font-weight: 600;
+                        font-weight: 400;
                       }
                       
                       &::-ms-input-placeholder { /* Microsoft Edge */
                         color: #EEF1EF;
-                        font-weight: 600;
+                        font-weight: 400;
                       }
                 }
                 textarea{
@@ -65,6 +66,7 @@
                     background-color: rgba(255, 255, 255, 0.5);
                     padding: 1rem;
                     font-size: 16px;
+                    font-weight: 300;
                     outline: none;
                     color: gold;
                 }
@@ -77,6 +79,9 @@
                     border: none;
                     font-size: 16px;
                     font-weight: 600;
+                    &:hover{
+                        background: #5CCF95;
+                    }
                 }
             }
             .input__box--textarea{
@@ -84,7 +89,7 @@
                 margin-left: 20%;
                 label{
                     font-size: 16px;
-                    font-weight: 600;
+                    font-weight: 400;
                     color: #EEF1EF;
                     padding: 1rem;
                 }
@@ -93,5 +98,8 @@
                 width: 80%;
             }
         }
+    }
+    @include media(1400px){
+        height: calc(118vh - 7rem - 23px);
     }
 }

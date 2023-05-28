@@ -24,6 +24,7 @@
     }
     .container{
         @include flex(flex, space-between, start, row);
+        font-weight: 300;
         margin-top: 2rem;
         @include media(1200px){
             @include flex(flex, space-between, center, column);

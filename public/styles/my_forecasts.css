@@ -32,6 +32,7 @@
   align-items: center;
   flex-direction: column;
   width: 100%;
+  font-weight: 300;
 }
 .container .fixture table thead {
   background: #000000;
@@ -50,7 +51,7 @@
   width: 4rem;
 }
 .container .fixture table thead tr .date {
-  width: 4.5rem;
+  width: 4rem;
 }
 .container .fixture table thead tr .vs {
   width: 2rem;
@@ -100,7 +101,7 @@
   }
 }
 .container .fixture table tbody tr .date {
-  width: 4.5rem;
+  width: 4.3rem;
 }
 .container .fixture table tbody tr .vs {
   width: 2rem;

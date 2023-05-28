@@ -7,11 +7,15 @@
     <link rel="shortcut icon" href="#" type="image/x-icon">
     <link rel="stylesheet" href="/styles/universal.css">
     <link rel="stylesheet" href="/styles/navigation.css">
-    <link rel="stylesheet" href="/styles/positions.css">
+    <link rel="stylesheet" href="/styles/profile.css">
     <link rel="stylesheet" href="/styles/footer.css">
     <!-- FONT AWSOME -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="shortcut icon" href="#" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400&display=swap" rel="stylesheet">
+    
     <title>BIG PRODE</title>
 </head>
 <body>
@@ -22,12 +26,12 @@
         <div class="profile__user">
             <h3 class="user__name">Bienvenido <%= user.fullname %></h3>
         </div>
-    </div>  
-    
-
-    <a href="/myforecasts">Mis pronósticos</a>
-    <a href="/forecasts">Pronósticos</a>
-    <a href="/positions">Tabla de posiciones</a>
+        <div class="profile__sections">
+            <a class="section section--myfore" href="/myforecasts">Mis pronósticos</a>
+            <a class="section section--fore" href="/forecasts">Pronósticos</a>
+            <a class="section section--pos" href="/positions">Tabla de posiciones</a>
+        </div>
+    </div>     
 
     <!-- FOOTER -->
     <%- include('./partials/footer.ejs') %>

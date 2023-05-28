@@ -29,6 +29,7 @@
 .main .main__title span {
   color: #EEF1EF;
   font-size: 33px;
+  font-weight: 300;
 }
 @media only screen and (max-width: 780px) {
   .main .main__title span {
@@ -42,6 +43,7 @@
   flex-direction: row;
   width: 100%;
   margin: 1.5rem 0;
+  font-weight: 300;
 }
 @media only screen and (max-width: 780px) {
   .main .main__info {

@@ -1,0 +1,48 @@
+.profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.profile .profile__user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-image: url("/images/portada.jpg");
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 40vh;
+}
+.profile .profile__user h3 {
+  font-size: 40px;
+  color: gold;
+}
+.profile .profile__sections {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+}
+.profile .profile__sections .section {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  background: #D1EECA;
+  width: 27%;
+  height: 31vh;
+  border-radius: 5px;
+  margin-top: 1.5rem;
+  margin-bottom: 2.5rem;
+  text-decoration: none;
+  color: #000000;
+  font-size: 30px;
+}
+.profile .profile__sections .section:hover {
+  background: #5CCF95;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  font-size: 33px;
+}/*# sourceMappingURL=profile.css.map */

@@ -1,0 +1,51 @@
+@mixin flex( $display, $justify, $align, $direction){
+    display: $display;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $direction;
+}
+@mixin media($medida: 780px){
+    @media only screen and (max-width: $medida){
+        @content
+    }
+}
+
+.profile{
+    @include flex(flex, center, center, column);
+    // background: pink;
+    .profile__user{
+        // background: gold;
+        @include flex(flex, center, center, column);
+        background-image: url('/images/portada.jpg');
+        background-position: center;
+        background-size: cover; 
+        width: 100%;
+        height: 40vh;
+        h3{
+            font-size: 40px;
+            color: gold;
+        }
+    }
+    .profile__sections{
+        // background: blanchedalmond;
+        @include flex(flex, space-around, center, row);
+        width: 100%;
+        .section{
+            @include flex(flex, space-around, center, row);
+            background: #D1EECA;
+            width: 27%;
+            height: 31vh;
+            border-radius: 5px;
+            margin-top: 1.5rem;
+            margin-bottom: 2.5rem;
+            text-decoration: none;
+            color: #000000;
+            font-size: 30px;
+            &:hover{
+                background: #5CCF95;
+                box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+                font-size: 33px;
+            }
+        }
+    }
+}

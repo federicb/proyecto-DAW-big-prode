@@ -33,6 +33,7 @@
         span{
             color: #EEF1EF;
             font-size: 33px;
+            font-weight: 300;
             @include media(){
                 font-size: 25px;
             }
@@ -42,6 +43,7 @@
         @include flex(flex, space-around, center, row);
         width: 100%;
         margin: 1.5rem 0;
+        font-weight: 300;
         @include media(){
             @include flex(flex, space-around, center, column);
         }
