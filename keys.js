@@ -4,6 +4,7 @@ module.exports = {
         user:process.env.DEV_MYSQL_USERNAME,
         password:process.env.DEV_MYSQL_PASSWORD,
         database:process.env.DEV_MYSQL_DATABASE,
+        port: 3306
     },
         database_prod:{
         host:process.env.PROD_MYSQL_HOST,
