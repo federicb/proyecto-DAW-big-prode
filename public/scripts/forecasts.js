@@ -72,7 +72,7 @@ document.querySelector('form').addEventListener('submit', function(event) {
     });
 
     // Renvio datos al servidor
-    fetch('/add', {
+    fetch('/add_update', {
         method: 'POST',
         headers: {
         'Content-Type': 'application/json'

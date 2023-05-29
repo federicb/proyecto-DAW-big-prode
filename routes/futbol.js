@@ -3,6 +3,7 @@ const router = Router();
 const { isLoggedIn } = require('../config/auth');
 const calculate = require('../config/calcs');
 const pool = require('../connection');
+const { v4: uuidv4 } = require('uuid');
 
 router.get('/positions', async (req, res) =>{
     
@@ -67,7 +68,7 @@ router.get('/forecasts', isLoggedIn, async (req, res) =>{
 });
 
 
-router.post('/add', isLoggedIn, async (req, res) => {
+router.post('/add_update', isLoggedIn, async (req, res) => {
 
     const datos = req.body; 
     // console.log(datos); 
@@ -133,39 +134,76 @@ router.post('/add', isLoggedIn, async (req, res) => {
 
 });  
 
-router.get('/myforecasts', isLoggedIn, async (req, res) => {
+// router.get('/myforecasts', isLoggedIn, async (req, res) => {
 
-    try {
-        const response = await fetch("https://v3.football.api-sports.io/fixtures?league=128&season=2023", {
-            method: "GET",
-            headers: {
-                "x-rapidapi-host": "v3.football.api-sports.io",
-                "x-rapidapi-key": process.env.API_KEY
-            }
-        });
-        const data = await response.json();
+//     try {
+//         const response = await fetch("https://v3.football.api-sports.io/fixtures?league=128&season=2023", {
+//             method: "GET",
+//             headers: {
+//                 "x-rapidapi-host": "v3.football.api-sports.io",
+//                 "x-rapidapi-key": process.env.API_KEY
+//             }
+//         });
+//         const data = await response.json();
 
-        const filteredMatches = data.response.filter(match => match.league.round.includes('1st Phase'));
+//         const filteredMatches = data.response.filter(match => match.league.round.includes('1st Phase'));
         
-        const [userForecasts] = await pool.query('SELECT * FROM forecasts WHERE id_user = ?', [req.user.id]);
-        // console.log(userForecasts);
+//         const [userForecasts] = await pool.query('SELECT * FROM forecasts WHERE id_user = ?', [req.user.id]);
+//         // console.log(userForecasts);
 
-        // res.json(filteredMatches);
-        res.render('my_forecasts', { 
-            matches: filteredMatches, 
-            userForecasts,
-            calculate: calculate          
-         });
+//         // res.json(filteredMatches);
+//         res.render('my_forecasts', { 
+//             matches: filteredMatches, 
+//             userForecasts,
+//             calculate: calculate          
+//          });
 
 
-    } catch (err) {
-        console.log(err);
-        res.status(500).send("Error al obtener las pronósticos");
-    }
+//     } catch (err) {
+//         console.log(err);
+//         res.status(500).send("Error al obtener las pronósticos");
+//     }
 
+// });
+
+router.get('/groups', isLoggedIn, (req, res) => {
+    res.render('groups')
 });
 
+router.get('/new_group', isLoggedIn, (req, res) => {
+    res.render('auth/new_group')
+});
 
+router.post('/create_group', isLoggedIn, async (req, res) => {
+    const  group_name  = req.body.group_name; 
+  
+    // genera un UUID para el grupo
+    const groupId = uuidv4();
+  
+    const newGroup = {
+        group_name, 
+        id: groupId,
+        user_creator: req.user.id
+    }
+    await pool.query('INSERT INTO `groups` SET ?', [newGroup]);
+
+    const userId = req.user.id;
+
+    // creador miembro
+    const membership = {
+        id_user: userId,
+        id_group: groupId
+    };
+    await pool.query('INSERT INTO users_groups SET ?', [membership]);
+
+    req.flash('success', 'Link saved successfully') 
+  
+    // genera el enlace para unirse al grupo
+    const joinLink = `https://tu-sitio.com/join/${groupId}`;
+  
+    // enlace de unión 
+    res.json({ joinLink });
+  });
   
 
 module.exports = router;

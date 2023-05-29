@@ -1,0 +1,102 @@
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+.main .groups {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  padding: 1rem;
+}
+.main .groups .groups__card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  border-radius: 3px;
+}
+.main .groups .groups__card a {
+  text-decoration: none;
+}
+.main .groups .groups__card .group__name {
+  color: #252323;
+  font-size: 30px;
+}
+.main .groups .groups__card span {
+  font-weight: 400;
+  padding: 1rem 0;
+}
+.main .groups .groups__card .btn__exit {
+  color: #EEF1EF;
+  background: #ff1e00;
+  padding: 0.4rem;
+  width: 100%;
+  border-radius: 5px;
+  text-align: center;
+}
+.main .groups__info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  padding: 1rem;
+}
+.main .groups__info .group__link {
+  width: 50%;
+  padding: 0.5rem;
+  background: #EEF1EF;
+  border: 1px solid gray;
+  border-radius: 3px;
+}
+.main .groups__info .group__members {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 50%;
+  margin: 1rem 0;
+  text-align: center;
+  font-weight: 300;
+}
+.main .groups__info .group__members .numbers {
+  width: 4.1rem;
+}
+.main .groups__info .group__members thead {
+  width: 100%;
+  background: #000000;
+  border-radius: 3px 3px 0 0;
+}
+.main .groups__info .group__members thead tr {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  padding: 0.4rem 0.5rem;
+}
+.main .groups__info .group__members thead tr th {
+  border: 1px solid black;
+  padding: auto;
+  color: #EEF1EF;
+}
+.main .groups__info .group__members tbody {
+  width: 100%;
+}
+.main .groups__info .group__members tbody tr {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  padding: 0.4rem 0.5rem;
+  border-top: 1px solid #d2d1d1;
+}
+.main .groups__info .group__members tbody tr td {
+  text-align: center;
+}/*# sourceMappingURL=groups.css.map */

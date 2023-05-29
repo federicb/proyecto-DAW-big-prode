@@ -22,7 +22,7 @@
     <%- include('./partials/navigation.ejs') %>
     <div class="container">
         <h1>Pronósticos</h1>
-        <form id="form" action="/add" method="POST">
+        <form id="form" action="/add_update" method="POST">
             <select id="roundSelect" name="round" onchange="filterMatches()">
                 <% for(let i = 1; i <= matches.length/14; i++) { %>
                 <option value="<%= `1st Phase - ${i}` %>">Fecha <%= i %></option>
@@ -134,6 +134,7 @@
             <button type="submit" id="send">Enviar</button>
         </form>
     </div>
+
     <!-- FOOTER -->
     <%- include('./partials/footer.ejs') %>
 

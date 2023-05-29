@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="#" type="image/x-icon">
+
     <link rel="stylesheet" href="/styles/universal.css">
     <link rel="stylesheet" href="/styles/navigation.css">
-    <link rel="stylesheet" href="/styles/profile.css">
+    <link rel="stylesheet" href="/styles/groups.css">
     <link rel="stylesheet" href="/styles/footer.css">
     <!-- FONT AWSOME -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -15,26 +15,40 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400&display=swap" rel="stylesheet">
-    
     <title>BIG PRODE</title>
 </head>
 <body>
-    <!-- HEADER -->
+    <!-- HEADER-->
     <%- include('./partials/navigation.ejs') %>
-
-    <div class="profile">
-        <div class="profile__user">
-            <h3 class="user__name">Bienvenido <%= user.fullname %></h3>
+    <div class="main">
+        <div class="groups">
+            <div class="groups__card">
+                <a class="group__name" href="#">group name</a>
+                <span>Miembros: 100</span>
+                <a class="btn__exit" href="#">Salir del grupo</a>
+            </div>
         </div>
-        <div class="profile__sections">
-            <a class="section" href="/groups">Grupos</a>
-            <a class="section" href="/forecasts">Pronósticos</a>
-            <a class="section" href="/positions">Tabla de posiciones</a>
+        <div class="groups__info">
+            <div class="group__link">
+                <p class="link">join link</p>
+            </div>
+            <table class="group__members">
+                <thead>
+                    <tr>
+                        <th class="numbers">Posición</th>
+                        <th>Usuario</th>
+                        <th class="numbers">Puntos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <td class="numbers">2</td>
+                    <td>pepe</td>
+                    <td class="numbers">23</td>
+                </tbody>
+            </table>
         </div>
-    </div>     
-
-    <!-- FOOTER -->
+    </div>
+    <!-- FOOTER-->
     <%- include('./partials/footer.ejs') %>
-
 </body>
 </html>

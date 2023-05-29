@@ -1,0 +1,97 @@
+@mixin flex( $display, $justify, $align, $direction){
+    display: $display;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $direction;
+}
+@mixin media($medida: 780px){
+    @media only screen and (max-width: $medida){
+        @content
+    }
+}
+
+.main{
+    @include flex(flex, center, center, column);
+    width: 100%;
+    .groups{
+        // background: pink;
+        @include flex(flex, center, center, row);
+        width: 100%;
+        padding: 1rem;
+        .groups__card{
+            // background: gold;
+            @include flex(flex, center, center, column);
+            padding: 1rem;
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+            border-radius: 3px;
+            a{
+                text-decoration: none;
+            }
+            .group__name{
+                color: #252323;
+                font-size: 30px;
+            }
+            span{
+                font-weight: 400;
+                padding: 1rem 0;
+            }
+            .btn__exit{
+                color: #EEF1EF;
+                background: #ff1e00;
+                padding: .4rem;
+                width: 100%;
+                border-radius: 5px;
+                text-align: center;
+            }
+        }
+    }
+    .groups__info{
+        // background: rosybrown;
+        @include flex(flex, center, center, column);
+        width: 100%;
+        padding: 1rem;
+        .group__link{
+            width: 50%;
+            padding: .5rem;
+            background: #EEF1EF;
+            border: 1px solid gray;
+            border-radius: 3px;
+        }
+        .group__members{
+            // background: gold;
+            @include flex(flex, center, center, column);
+            width: 50%;
+            margin: 1rem 0;
+            text-align: center;
+            font-weight: 300;
+            .numbers{
+                width: 4.1rem;
+            }
+            thead{
+                width: 100%;
+                background: #000000;
+                border-radius: 3px 3px 0 0;
+                tr{
+                    @include flex(flex, space-between, center, row);
+                    padding: .4rem .5rem;
+                    th{
+                        border: 1px solid black;
+                        padding: auto;
+                        color: #EEF1EF;
+                    }
+                }
+            }
+            tbody{
+                width: 100%;
+                tr{
+                    @include flex(flex, space-between, center, row);
+                    padding: .4rem .5rem;
+                    border-top: 1px solid #d2d1d1;
+                    td{
+                        text-align: center;                        
+                    }
+                }
+            }
+        }
+    }
+}

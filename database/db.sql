@@ -29,15 +29,17 @@ ALTER TABLE forecasts DROP COLUMN pts;
 
 -- GROUPS TABLE
 CREATE TABLE `groups` (
-    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    group_name VARCHAR(100) NOT NULL
+    id VARCHAR(100) PRIMARY KEY,
+    group_name VARCHAR(100) NOT NULL,
+    user_creator INT UNSIGNED,
+    CONSTRAINT fk_user_creator FOREIGN KEY(user_creator) REFERENCES users(id)
 );
 
 -- INTERMEDIATE TABLE USERS - GROUPS
 CREATE TABLE users_groups (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     id_user INT UNSIGNED,
-    id_group INT UNSIGNED,
+    id_group VARCHAR(100),
     FOREIGN KEY (id_user) REFERENCES users(id),
     FOREIGN KEY (id_group) REFERENCES `groups`(id)
 );
