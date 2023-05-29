@@ -166,9 +166,50 @@ router.post('/add_update', isLoggedIn, async (req, res) => {
 
 // });
 
-router.get('/groups', isLoggedIn, (req, res) => {
-    res.render('groups')
+router.get('/groups', isLoggedIn, async (req, res) => {
+
+    const userId = req.user.id; 
+    const groupId = req.params.groupId;
+  
+    try {
+
+    // const [userRows] = await pool.query('SELECT * FROM users');
+    // const [userR] = await pool.query('SELECT users.* FROM users JOIN users_groups ON users.id = users_groups.id_user WHERE users_groups.id_group = ?', [groupId]);
+
+    // const [membershipRows] = await pool.query('SELECT * FROM users_groups WHERE id_user = ?', [userId]);
+
+    // const groupIds = membershipRows.map((row) => row.id_group);
+
+    const [totalMembers] = await pool.query('SELECT id_group, COUNT(*) AS memberCount FROM users_groups GROUP BY id_group');
+
+    // const [groupRows] = await pool.query('SELECT * FROM `groups` WHERE id IN (?)', [groupIds]);
+    const [ users ] = await pool.query('SELECT * FROM users');
+    const [ users_groups ] = await pool.query('SELECT * FROM users_groups');
+    const [ groups ] = await pool.query('SELECT * FROM `groups`');
+    const [groups_members] = await pool.query('SELECT * FROM users INNER JOIN users_groups ON users_groups.id_user = users.id INNER JOIN `groups` ON `groups`.id = users_groups.id_group ORDER BY users.total_points DESC')
+
+    console.log(groups_members)
+    // res.json({
+    //     users,
+    //     users_groups,
+    //     groups,
+    //     totalMembers,
+    //     groups_members
+    // });
+    res.render('groups', {
+        users,
+        users_groups,
+        groups, 
+        totalMembers,
+        groups_members
+    });
+  
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Error al obtener los datos');
+    }
 });
+  
 
 router.get('/new_group', isLoggedIn, (req, res) => {
     res.render('auth/new_group')
