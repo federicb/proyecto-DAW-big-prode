@@ -10,6 +10,8 @@ CREATE TABLE users (
     fullname VARCHAR(100) NOT NULL
 );
 
+ALTER TABLE users ADD COLUMN total_points INT DEFAULT 0;
+
 -- FORECASTS TABLE
 CREATE TABLE forecasts (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -23,6 +25,7 @@ CREATE TABLE forecasts (
     CONSTRAINT UC_forecasts UNIQUE (id, id_user)
 );
 
+ALTER TABLE forecasts DROP COLUMN pts;
 
 -- GROUPS TABLE
 CREATE TABLE `groups` (

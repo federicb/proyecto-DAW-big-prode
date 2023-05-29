@@ -71,10 +71,13 @@ router.post('/add', isLoggedIn, async (req, res) => {
 
     const datos = req.body; 
     // console.log(datos); 
+
     const round = datos.round;
     //busca la pocision de ' - ' +2(espacio) y luego con substring el valor del round
     const id_round = round.substring(round.indexOf('-') + 2);
     // console.log('Round:', id_round); 
+
+    const totalPoints = datos.totalPoints;
     
     const processed_matches = {};
     
@@ -103,7 +106,8 @@ router.post('/add', isLoggedIn, async (req, res) => {
                 f_goal_local,
                 f_goal_away,
                 id_round,
-                id_user: req.user.id
+                id_user: req.user.id,
+                totalPoints
             };
             // console.log(newForecast);
 
@@ -116,6 +120,7 @@ router.post('/add', isLoggedIn, async (req, res) => {
             if (existingForecastRows.length > 0) {
                 // si existe, realiza actualización
                 await pool.query('UPDATE forecasts SET f_goal_local = ?, f_goal_away = ? WHERE id_fixture = ? AND id_user = ?', [f_goal_local, f_goal_away, id_fixture, req.user.id]);
+                await pool.query('UPDATE users SET total_points = ? WHERE id = ?', [totalPoints, req.user.id]);
             } else {
                 // si no existe, realiza inserción
                 await pool.query('INSERT INTO forecasts SET ?', [newForecast]);

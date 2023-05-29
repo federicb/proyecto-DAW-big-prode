@@ -56,8 +56,14 @@ document.querySelector('form').addEventListener('submit', function(event) {
     const roundSelect = document.getElementById('roundSelect');
     const roundValue = roundSelect.value;
 
+    const totalPointsInput = document.getElementById('totalPoints');
+    const totalPoints = totalPointsInput.value;
+
+
     const formData = {};
     formData['round'] = roundValue;
+    formData['totalPoints'] = totalPoints;
+
     document.querySelectorAll('.selected-round').forEach(function(input) {
         const name = input.name;
         const value = input.value;
