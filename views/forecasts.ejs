@@ -45,57 +45,90 @@
                     <tbody>
                         <!-- ordena los partidos por fecha en orden ascendente -->
                         <% matches.sort((a, b) => new Date(a.fixture.date) - new Date(b.fixture.date)); %>
+                        <% let totalPoints = 0; %>
                         <% for (let i = 0; i < matches.length; i++) { %>
                             <% if (matches[i].league.round.includes('1st Phase')) { %>
+                                <% let matchPoints = 0; %>
                                 <tr class="match-result" data-round="<%= matches[i].league.round %>">
                                     <td class="date">
                                       <% const matchDate = new Date(matches[i].fixture.date); %>
                                       <% const md = matchDate.toLocaleString('es-ES', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }) %>
                                       <%= md.replace(",", "")  %>
                                     </td>
+
                                     <td class="teams">
                                         <div class="teams__logo">
                                             <img style="width: 25px;" src="<%= matches[i].teams.home.logo %>" alt="">
                                             <span><%= matches[i].teams.home.name %></span>
                                         </div>
                                     </td>
+
                                     <td>
                                         <div class="input__cont">
                                             <% if ( matchDate < new Date() ) { %>
-                                                <input type="text" maxlength="2" oninput="validarNumeros(event)" id="localF-<%= matches[i].fixture.id %>" class="forecasts" name="forecasts[<%= matches[i].fixture.id %>][local]" value="" disabled>                                                                                         
+                                                <span id="localF-<%= matches[i].fixture.id %>" class=""> 
+                                                    <% for (let j = 0; j < userForecasts.length; j++) { %>
+                                                        <% if (userForecasts[j].id_fixture === matches[i].fixture.id) { %>
+                                                            <%= userForecasts[j].f_goal_local %>
+                                                        <% } %>
+                                                    <% } %>
+                                                </span>                                                                                     
                                               <% } else { %>
-                                                <input type="text" maxlength="2" oninput="validarNumeros(event)" id="localF-<%= matches[i].fixture.id %>" class="forecasts" name="forecasts[<%= matches[i].fixture.id %>][local]" value="">                                               
+                                                <input type="text" maxlength="2" oninput="validarNumeros(event)" id="localF-<%= matches[i].fixture.id %>" class="forecasts" name="forecasts[<%= matches[i].fixture.id %>][local]" value="<%= calculate.getUserForecastValue(userForecasts, matches[i].fixture.id, 'local') %>">                                               
                                               <% } %>
                                         </div>
-                                        </div>
                                     </td>
+
                                     <td class="vs">-</td>
+
                                     <td>
                                         <div class="input__cont">
                                             <% if ( matchDate < new Date() ) { %>
-                                                <input type="text" maxlength="2" oninput="validarNumeros(event)" id="awayF-<%= matches[i].fixture.id %>" class="forecasts" name="forecasts[<%= matches[i].fixture.id %>][away]" value="" disabled>                
+                                                <span id="awayR-<%= matches[i].fixture.id %>" class=""> 
+                                                    <% for (let j = 0; j < userForecasts.length; j++) { %>
+                                                        <% if (userForecasts[j].id_fixture === matches[i].fixture.id) { %>
+                                                            <%= userForecasts[j].f_goal_away %>
+                                                        <% } %>
+                                                    <% } %>
+                                                </span>             
                                             <% } else { %>
-                                                <input type="text" maxlength="2" oninput="validarNumeros(event)" id="awayF-<%= matches[i].fixture.id %>" class="forecasts" name="forecasts[<%= matches[i].fixture.id %>][away]" value="">                
+                                                <input type="text" maxlength="2" oninput="validarNumeros(event)" id="awayF-<%= matches[i].fixture.id %>" class="forecasts" name="forecasts[<%= matches[i].fixture.id %>][away]" value="<%= calculate.getUserForecastValue(userForecasts, matches[i].fixture.id, 'away') %>">                
                                             <% } %>
                                         </div>
                                     </td>
+
                                     <td class="teams">
                                         <div class="teams__logo">
                                             <span><%= matches[i].teams.away.name %></span>
                                             <img style="width: 25px;" src="<%= matches[i].teams.away.logo %>" alt="">
                                         </div>
                                     </td>
+
                                     <td>
                                         <span id="localR-<%= i+1 %>"><%= matches[i].goals.home %></span>
                                             - 
                                         <span id="awayR-<%= i+1 %>"><%= matches[i].goals.away %></span>
                                     </td>
-                                    <td></td>
+
+                                    <td>
+                                        <% for( let index = 0; index < userForecasts.length; index++ ) { %>
+                                            <% if (userForecasts[index].id_fixture === matches[i].fixture.id) { %>
+                                                <% const points = calculate.calculateResults(userForecasts[index].f_goal_local, userForecasts[index].f_goal_away, matches[i].goals.home, matches[i].goals.away); %>
+                                                <span id="PTS<%= matches[i].fixture.id %>"> <%= points %> </span>
+                                                <% matchPoints += points; %>
+                                            <% } %>
+                                        <% } %>
+                                        <% totalPoints += matchPoints; %>
+                                    </td>
+
                                 </tr>
                             <% } %>
                         <% } %>
                     </tbody>
                 </table>
+                <div class="points">
+                    <span class="points__total">Total puntos acumulados: <%= totalPoints %></span>
+                </div>
             </div>  
             <button type="submit" id="send">Enviar</button>
         </form>
@@ -104,7 +137,7 @@
     <%- include('./partials/footer.ejs') %>
 
     <script src="/scripts/forecasts.js"></script>  
-    
+
 
 </body>
 </html>

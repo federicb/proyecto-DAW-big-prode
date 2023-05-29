@@ -151,6 +151,17 @@
     margin: 0;
   }
 }
+.container #form .fixture .points {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  padding-top: 1rem;
+}
+.container #form .fixture .points .points__total {
+  font-size: 17px;
+}
 .container #form #send {
   padding: 0.7rem 1.3rem;
   background: #5CCF95;

@@ -125,6 +125,14 @@
                     }
                 }
             }
+            .points{
+                @include flex(flex, center, center, column);
+                width: 100%;
+                padding-top: 1rem;
+                .points__total{
+                    font-size: 17px;
+                }
+            }
         }
         #send{
             padding: .7rem 1.3rem;

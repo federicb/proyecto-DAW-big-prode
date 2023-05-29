@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-    
     const roundSelect = document.getElementById('roundSelect');
     let selectedRound = roundSelect.value;
     filterMatches(selectedRound);
@@ -8,11 +7,9 @@ document.addEventListener('DOMContentLoaded', function() {
     roundSelect.addEventListener('change', function() {
         selectedRound = roundSelect.value;
         filterMatches(selectedRound);
-    });
-    
+    });  
     
 });
-
 
 // agraga clase select-round a todos los inputs segun el round
 function filterMatches(selectedRound) {
@@ -38,18 +35,7 @@ function filterMatches(selectedRound) {
             }
         }
     }
-
 }
-
-// function calculateResults(f_goal_local, f_goal_away, goals_home, goals_away) {
-//     // calculo de puntos
-//     const suma = f_goal_local + goals_home;
-//     const multiplicacion = f_goal_away * goals_away;
-//     const calcs = multiplicacion - suma;
-    
-//     return calcs;
-
-// }
 
 function formatDate(date) {
     const day = String(date.getDate()).padStart(2, '0');
@@ -63,7 +49,6 @@ function validarNumeros(event) {
     const input = event.target.value;
     event.target.value = input.replace(/[^0-9]/g, '');
 }
-
 
 document.querySelector('form').addEventListener('submit', function(event) {
     event.preventDefault();
@@ -100,7 +85,7 @@ document.querySelector('form').addEventListener('submit', function(event) {
         // Respuesta del servidor
         console.log(data);
         // Realiza redireccionamiento en el lado del servidor
-        window.location.href = '/myforecasts';
+        window.location.href = req.get('referer');
     })
     .catch(function(error) {
 

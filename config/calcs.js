@@ -52,7 +52,21 @@ module.exports = {
         }
         
         return points;
+      },
+
+      getUserForecastValue(userForecasts, fixtureId, forecastType) {
+        for (let j = 0; j < userForecasts.length; j++) {
+          if (userForecasts[j].id_fixture === fixtureId) {
+            if (forecastType === 'local') {
+              return userForecasts[j].f_goal_local;
+            } else if (forecastType === 'away') {
+              return userForecasts[j].f_goal_away;
+            }
+          }
+        }
+        return ''; // Valor predeterminado si no se encuentra una coincidencia
       }
+      
         
       
 };
