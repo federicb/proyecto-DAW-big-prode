@@ -64,10 +64,16 @@
   padding: 2rem;
   border-radius: 5px;
 }
+@media only screen and (max-width: 1160px) {
+  .main .main__info .info {
+    height: 55vh;
+  }
+}
 @media only screen and (max-width: 780px) {
   .main .main__info .info {
     width: 70%;
     margin: 1rem 0;
+    height: 31vh;
   }
 }
 .main .main__info .info span {

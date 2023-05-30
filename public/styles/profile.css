@@ -19,12 +19,27 @@
   font-size: 40px;
   color: gold;
 }
+@media only screen and (max-width: 450px) {
+  .profile .profile__user h3 {
+    font-size: 30px;
+    width: 90%;
+    text-align: center;
+  }
+}
 .profile .profile__sections {
   display: flex;
   justify-content: space-around;
   align-items: center;
   flex-direction: row;
   width: 100%;
+}
+@media only screen and (max-width: 660px) {
+  .profile .profile__sections {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
 }
 .profile .profile__sections .section {
   display: flex;
@@ -38,6 +53,7 @@
   margin-top: 1.5rem;
   margin-bottom: 2.5rem;
   text-decoration: none;
+  text-align: center;
   color: #000000;
   font-size: 30px;
 }
@@ -45,4 +61,17 @@
   background: #5CCF95;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   font-size: 33px;
+}
+@media only screen and (max-width: 868px) {
+  .profile .profile__sections .section {
+    width: 23%;
+    font-size: 25px;
+  }
+}
+@media only screen and (max-width: 660px) {
+  .profile .profile__sections .section {
+    width: 80%;
+    height: 10vh;
+    margin: 1rem 0;
+  }
 }/*# sourceMappingURL=profile.css.map */

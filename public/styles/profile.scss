@@ -24,12 +24,20 @@
         h3{
             font-size: 40px;
             color: gold;
+            @include media(450px){
+                font-size: 30px;
+                width: 90%;
+                text-align: center;
+            }
         }
     }
     .profile__sections{
         // background: blanchedalmond;
         @include flex(flex, space-around, center, row);
         width: 100%;
+        @include media(660px){
+            @include flex(flex, center, center, column);            
+        }
         .section{
             @include flex(flex, space-around, center, row);
             background: #D1EECA;
@@ -39,12 +47,22 @@
             margin-top: 1.5rem;
             margin-bottom: 2.5rem;
             text-decoration: none;
+            text-align: center;
             color: #000000;
             font-size: 30px;
             &:hover{
                 background: #5CCF95;
                 box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
                 font-size: 33px;
+            }
+            @include media(868px){
+                width: 23%;
+                font-size: 25px;
+            }
+            @include media(660px){
+                width: 80%;   
+                height: 10vh;  
+                margin: 1rem 0;       
             }
         }
     }

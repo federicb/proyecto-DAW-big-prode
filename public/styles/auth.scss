@@ -13,12 +13,24 @@
 .register__content{
     @include flex(flex, center, center, column);
     height: calc(100vh - 7rem - 26px);
+    @include media(450px){
+        height: 70vh;
+    }
     .register__form{
         @include flex(flex, space-between, center, column);
         width: 30%;
         padding: 2rem;
         border-radius: 5px;
         box-shadow: 1px 1px 4px #bebebe, -1px -1px 4px #bebebe;
+        @include media(){
+            width: 50%;
+        }
+        @include media(600px){
+            width: 70%;
+        }
+        @include media(450px){
+            width: 90%;
+        }
         h1{
             margin-bottom: 1rem;
         }

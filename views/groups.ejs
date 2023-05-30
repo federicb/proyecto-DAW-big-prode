@@ -21,8 +21,12 @@
     <!-- HEADER-->
     <%- include('./partials/navigation.ejs') %>
     <div class="main">
-        <div class="groups">
-            <a href="/new_group">Crear grupo</a>
+        <div class="groups">                
+            <a class="groups__card groups__card--create" href="/new_group">
+                <img src="/images/new_group.png" alt="">
+                <span>Crear grupo</span>
+            </a>
+   
             <% for (let j = 0; j < groups_user2.length; j++) { %>            
                 <div class="groups__card">
                     <a class="group__name" href="#" data-groupid="<%= groups_user2[j].id_group %>"><%= groups_user2[j].group_name %></a>

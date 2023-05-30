@@ -5,6 +5,11 @@
   flex-direction: column;
   height: calc(100vh - 7rem - 26px);
 }
+@media only screen and (max-width: 450px) {
+  .register__content {
+    height: 70vh;
+  }
+}
 .register__content .register__form {
   display: flex;
   justify-content: space-between;
@@ -14,6 +19,21 @@
   padding: 2rem;
   border-radius: 5px;
   box-shadow: 1px 1px 4px #bebebe, -1px -1px 4px #bebebe;
+}
+@media only screen and (max-width: 780px) {
+  .register__content .register__form {
+    width: 50%;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .register__content .register__form {
+    width: 70%;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .register__content .register__form {
+    width: 90%;
+  }
 }
 .register__content .register__form h1 {
   margin-bottom: 1rem;

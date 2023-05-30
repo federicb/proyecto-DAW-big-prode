@@ -40,7 +40,7 @@
         margin-right: 40px;
         cursor: pointer;
         display: none;
-        @include media(){
+        @include media(856px){
             display: block;
         }
     }
@@ -60,7 +60,7 @@
         @include flex(flex, space-between, center, row);
         float: right;
         margin-right: 2rem;
-        @include media(){
+        @include media(856px){
             @include flex(flex, center, center, column);
             position: absolute;
             width: 100%;

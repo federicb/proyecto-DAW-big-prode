@@ -54,9 +54,13 @@
             height: 31vh;
             padding: 2rem;
             border-radius: 5px;
+            @include media(1160px){
+                height: 55vh;
+            }  
             @include media(){
                 width: 70%;
                 margin: 1rem 0;
+                height: 31vh;
             }            
             span{
                 font-size: 19px;

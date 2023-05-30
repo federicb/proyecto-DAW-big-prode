@@ -16,14 +16,22 @@
     .groups{
         // background: pink;
         @include flex(flex, center, center, row);
+        flex-wrap: wrap;
         width: 100%;
         padding: 1rem;
         .groups__card{
             // background: gold;
             @include flex(flex, center, center, column);
+            width: 10rem;
             padding: 1rem;
-            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+            margin: 1rem;
             border-radius: 3px;
+            box-shadow: 1px 1px 4px #bebebe, -1px -1px 4px #bebebe;
+            transition: .3s;
+            &:hover{
+                box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+                
+            }
             a{
                 text-decoration: none;
             }
@@ -37,12 +45,28 @@
             }
             .btn__exit{
                 color: #EEF1EF;
-                background: #ff1e00;
+                background: #da1d05;
                 padding: .4rem;
                 width: 100%;
                 border-radius: 5px;
                 text-align: center;
+                &:hover{
+                    background: #ff1e00;
+                }
             }
+        }
+        .groups__card--create{    
+            color: #000000;   
+            text-decoration: none;     
+            img{
+                width: 65px;
+            }       
+            span{
+                font-size: 17px;                  
+            }
+            &:hover{
+                transform: scale(1.05);
+            }  
         }
     }
     .groups__info{
@@ -58,6 +82,9 @@
             background: #EEF1EF;
             border: 1px solid gray;
             border-radius: 3px;
+            @include media(){
+                width: 90%;
+            }
         }
         .group__members{
             // background: gold;
@@ -66,6 +93,9 @@
             margin: 1rem 0;
             text-align: center;
             font-weight: 300;
+            @include media(){
+                width: 90%;
+            }
             .numbers{
                 width: 4.1rem;
             }

@@ -7,6 +7,7 @@
 .main__positions h1 {
   padding: 3rem 33rem;
   font-size: 45px;
+  text-align: center;
 }
 @media only screen and (max-width: 1300px) {
   .main__positions h1 {
