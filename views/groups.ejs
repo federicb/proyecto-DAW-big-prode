@@ -38,7 +38,7 @@
             <% } %>
             
         </div>
-        <div class="groups__info">
+        <div class="groups__info" >
             <div class="group__link">
                 <p class="link"> <%= joinLink %> </p>
             </div>
@@ -76,20 +76,26 @@
 
     <script>
         const groupLinks = document.querySelectorAll('.group__name');
-        const groupMemberRows = document.querySelectorAll('.group-member-row');
+        const groupInfo = document.querySelector('.groups__info');
 
-      
         groupLinks.forEach(link => {
           link.addEventListener('click', () => {
             const groupId = link.getAttribute('data-groupid');
+            
+            // oculta filas
+            const groupMemberRows = document.querySelectorAll('.group-member-row');
             groupMemberRows.forEach(row => {
-              const rowGroupId = row.getAttribute('data-groupid');
-              if (groupId === rowGroupId) {
-                row.style.display = 'table-row';
-              } else {
-                row.style.display = 'none';
-              }
+              row.style.display = 'none';
             });
+            
+            // muestra solo filas de miembros del grupo seleccionado
+            const matchingMemberRows = document.querySelectorAll(`.group-member-row[data-groupid="${groupId}"]`);
+            matchingMemberRows.forEach(row => {
+              row.style.display = 'flex';
+            });
+
+            // muestra el grupo_info
+            groupInfo.style.display = 'flex';
           });
         });
     </script>

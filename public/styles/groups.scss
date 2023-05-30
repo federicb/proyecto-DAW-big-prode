@@ -50,7 +50,9 @@
         @include flex(flex, center, center, column);
         width: 100%;
         padding: 1rem;
+        display: none;
         .group__link{
+            // background: green;
             width: 50%;
             padding: .5rem;
             background: #EEF1EF;

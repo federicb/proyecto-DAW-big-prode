@@ -205,7 +205,7 @@ router.post('/create_group', isLoggedIn, async (req, res) => {
     const groupId = uuidv4();
 
     // genera el enlace para unirse al grupo
-    const joinLink = `https://tu-sitio.com/join/${groupId}`;
+    const joinLink = `https://localhost:4000/join/${groupId}`;
     req.session.joinLink = joinLink;
   
     const newGroup = {
@@ -230,6 +230,8 @@ router.post('/create_group', isLoggedIn, async (req, res) => {
     // res.json({ joinLink });
     res.redirect('/groups');
   });
+  
+
   
 
 module.exports = router;

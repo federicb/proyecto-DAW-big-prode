@@ -48,6 +48,7 @@
   flex-direction: column;
   width: 100%;
   padding: 1rem;
+  display: none;
 }
 .main .groups__info .group__link {
   width: 50%;
