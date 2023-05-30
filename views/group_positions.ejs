@@ -25,13 +25,13 @@
             <a href="/new_group">Crear grupo</a>
             <% for (let j = 0; j < groups_user2.length; j++) { %>            
                 <div class="groups__card">
-                    <a class="group__name" href="#"><%= groups_user2[j].group_name %></a>
+                    <a class="group__name" href="#" data-groupid="<%= groups_user[j].id_group %>"><%= groups_user[j].group_name %></a>
                     <span>Miembros: 
-                        <% for (let x = 0; x < totalMembers2.length; x++) { %>
-                            <% if (totalMembers2[x].id === groups_user[j].id_group) { %>
-                                <%= totalMembers2[x].total_integrantes %>
-                            <% } %>
-                        <% } %>
+                        <% for (let x = 0; x < totalMembers2.length; x++) {
+                            if (totalMembers2[x].id === groups_user[j].id_group) {
+                                %><%= totalMembers2[x].total_integrantes %><%
+                            }
+                        } %>
                     </span>
                     <a class="btn__exit" href="#">Salir del grupo</a>
                 </div>
@@ -51,21 +51,14 @@
                     </tr>
                 </thead>
                 <tbody id="groupMembersTableBody">
-
-                    <% for (let i = 0; i < groups_user2.length; i++) { %>
-                        <% const group = groups_user2[i]; %>
-                        <% console.log(group) %>
-                        <% const matchingMembers = groups_members2.filter(member => member.id_group === group.id_group); %>
-                        <% console.log(matchingMembers) %>
-                        <% for (let j = 0; j < matchingMembers.length; j++) { %>
-                            <% const member = matchingMembers[j]; %>
-                            <tr>
-                                <td class="numbers"><%= j + 1 %></td>
-                                <td><%= member.fullname %></td>
-                                <td class="numbers"><%= member.total_points %></td>
-                            </tr>
-                        <% } %>
-                    <% } %>
+                    <% for (let i = 0; i < groups_members2.length; i++) { %>
+                       
+                        <tr>
+                          <td class="numbers"><%= i + 1 %></td>
+                          <td><%= groups_members2[i].fullname %></td> 
+                          <td class="numbers"><%= groups_members2[i].total_points %></td> 
+                        </tr>
+                      <% } %>
                       
                 </tbody>
             </table>

@@ -35,6 +35,8 @@ CREATE TABLE `groups` (
     CONSTRAINT fk_user_creator FOREIGN KEY(user_creator) REFERENCES users(id)
 );
 
+ALTER TABLE `groups` ADD invitation VARCHAR(100);
+
 -- INTERMEDIATE TABLE USERS - GROUPS
 CREATE TABLE users_groups (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,

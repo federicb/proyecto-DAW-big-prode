@@ -150,13 +150,13 @@ router.get('/groups', isLoggedIn, async (req, res) => {
         // const [groups_members] = await pool.query('SELECT * FROM users INNER JOIN users_groups ON users_groups.id_user = users.id INNER JOIN `groups` ON `groups`.id = users_groups.id_group ORDER BY users.total_points DESC');
         // console.log(groups_members)
 
-        const [groups_members2] = await pool.query('SELECT users.fullname, users.total_points, `groups`.group_name, users_groups.id_user, users_groups.id_group FROM users INNER JOIN users_groups ON users_groups.id_user = users.id INNER JOIN `groups` ON `groups`.id = users_groups.id_group ORDER BY users.total_points DESC');
-        console.log(groups_members2)
+        const [groups_members2] = await pool.query('SELECT users.fullname, users.total_points, `groups`.group_name, `groups`.invitation, users_groups.id_user, users_groups.id_group FROM users INNER JOIN users_groups ON users_groups.id_user = users.id INNER JOIN `groups` ON `groups`.id = users_groups.id_group ORDER BY users.total_points DESC');
+        // console.log(groups_members2)
 
-        const [totalMembers2] = await pool.query('SELECT `groups`.id, `groups`.group_name, COUNT(*) AS total_integrantes FROM users INNER JOIN users_groups ON users_groups.id_user = users.id INNER JOIN `groups` ON `groups`.id = users_groups.id_group GROUP BY `groups`.group_name ORDER BY total_integrantes DESC')
+        const [totalMembers2] = await pool.query('SELECT `groups`.id, `groups`.group_name, `groups`.invitation, COUNT(*) AS total_integrantes FROM users INNER JOIN users_groups ON users_groups.id_user = users.id INNER JOIN `groups` ON `groups`.id = users_groups.id_group GROUP BY `groups`.group_name ORDER BY total_integrantes DESC')
         // console.log(totalMembers2)
 
-        const [groups_user2] = await pool.query('SELECT users.fullname, users.total_points, `groups`.group_name, users_groups.id_user, users_groups.id_group FROM users INNER JOIN users_groups ON users_groups.id_user = users.id INNER JOIN `groups` ON `groups`.id = users_groups.id_group WHERE users_groups.id_user = ? ORDER BY users.total_points DESC', [req.user.id]);
+        const [groups_user2] = await pool.query('SELECT users.fullname, users.total_points, `groups`.group_name, `groups`.invitation, users_groups.id_user, users_groups.id_group FROM users INNER JOIN users_groups ON users_groups.id_user = users.id INNER JOIN `groups` ON `groups`.id = users_groups.id_group WHERE users_groups.id_user = ? ORDER BY users.total_points DESC', [req.user.id]);
         // console.log(groups_user2)
 
         const [groups_user] = await pool.query('SELECT * FROM users INNER JOIN users_groups ON users_groups.id_user = users.id INNER JOIN `groups` ON `groups`.id = users_groups.id_group WHERE users_groups.id_user = ? ORDER BY users.total_points DESC', [req.user.id]);
@@ -203,11 +203,16 @@ router.post('/create_group', isLoggedIn, async (req, res) => {
   
     // genera un UUID para el grupo
     const groupId = uuidv4();
+
+    // genera el enlace para unirse al grupo
+    const joinLink = `https://tu-sitio.com/join/${groupId}`;
+    req.session.joinLink = joinLink;
   
     const newGroup = {
         group_name, 
         id: groupId,
-        user_creator: req.user.id
+        user_creator: req.user.id,
+        invitation: joinLink
     }
     await pool.query('INSERT INTO `groups` SET ?', [newGroup]);
 
@@ -222,12 +227,6 @@ router.post('/create_group', isLoggedIn, async (req, res) => {
 
     req.flash('success', 'Link saved successfully') 
   
-    // genera el enlace para unirse al grupo
-    const joinLink = `https://tu-sitio.com/join/${groupId}`;
-    req.session.joinLink = joinLink;
-
-  
-    // enlace de unión 
     // res.json({ joinLink });
     res.redirect('/groups');
   });
