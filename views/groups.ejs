@@ -22,15 +22,25 @@
     <%- include('./partials/navigation.ejs') %>
     <div class="main">
         <div class="groups">
-            <div class="groups__card">
-                <a class="group__name" href="#"><%= groups[0].group_name %></a>
-                <span>Miembros: <%= totalMembers[0].memberCount %></span>
-                <a class="btn__exit" href="#">Salir del grupo</a>
-            </div>
+            <a href="/new_group">Crear grupo</a>
+            <% for (let j = 0; j < groups_user2.length; j++) { %>            
+                <div class="groups__card">
+                    <a class="group__name" href="#" data-groupid="<%= groups_user[j].id_group %>"><%= groups_user[j].group_name %></a>
+                    <span>Miembros: 
+                        <% for (let x = 0; x < totalMembers2.length; x++) {
+                            if (totalMembers2[x].id === groups_user[j].id_group) {
+                                %><%= totalMembers2[x].total_integrantes %><%
+                            }
+                        } %>
+                    </span>
+                    <a class="btn__exit" href="#">Salir del grupo</a>
+                </div>
+            <% } %>
+            
         </div>
         <div class="groups__info">
             <div class="group__link">
-                <p class="link">join link</p>
+                <p class="link"> <%= joinLink %> </p>
             </div>
             <table class="group__members">
                 <thead>
@@ -40,21 +50,22 @@
                         <th class="numbers">Puntos</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <% for (let i = 0; i < users_groups.length; i++) { %>
-                        <% const membership = users_groups[i]; %>
-                        <% const user = users.find((user) => user.id === users_groups.id_user); %>
+                <tbody id="groupMembersTableBody">
+                    <% for (let i = 0; i < groups_members2.length; i++) { %>
+                       
                         <tr>
-                          <td class="numbers"> <%= i + 1 %> </td>
-                          <td> <%= groups_members[i].fullname %> </td> 
-                          <td class="numbers"> <%= groups_members[i].total_points %> </td> 
+                          <td class="numbers"><%= i + 1 %></td>
+                          <td><%= groups_members2[i].fullname %></td> 
+                          <td class="numbers"><%= groups_members2[i].total_points %></td> 
                         </tr>
                       <% } %>
+                      
                 </tbody>
             </table>
         </div>
     </div>
     <!-- FOOTER-->
     <%- include('./partials/footer.ejs') %>
+
 </body>
 </html>

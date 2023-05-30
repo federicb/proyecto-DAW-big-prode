@@ -134,38 +134,6 @@ router.post('/add_update', isLoggedIn, async (req, res) => {
 
 });  
 
-// router.get('/myforecasts', isLoggedIn, async (req, res) => {
-
-//     try {
-//         const response = await fetch("https://v3.football.api-sports.io/fixtures?league=128&season=2023", {
-//             method: "GET",
-//             headers: {
-//                 "x-rapidapi-host": "v3.football.api-sports.io",
-//                 "x-rapidapi-key": process.env.API_KEY
-//             }
-//         });
-//         const data = await response.json();
-
-//         const filteredMatches = data.response.filter(match => match.league.round.includes('1st Phase'));
-        
-//         const [userForecasts] = await pool.query('SELECT * FROM forecasts WHERE id_user = ?', [req.user.id]);
-//         // console.log(userForecasts);
-
-//         // res.json(filteredMatches);
-//         res.render('my_forecasts', { 
-//             matches: filteredMatches, 
-//             userForecasts,
-//             calculate: calculate          
-//          });
-
-
-//     } catch (err) {
-//         console.log(err);
-//         res.status(500).send("Error al obtener las pronósticos");
-//     }
-
-// });
-
 router.get('/groups', isLoggedIn, async (req, res) => {
 
     const userId = req.user.id; 
@@ -173,22 +141,33 @@ router.get('/groups', isLoggedIn, async (req, res) => {
   
     try {
 
-    // const [userRows] = await pool.query('SELECT * FROM users');
-    // const [userR] = await pool.query('SELECT users.* FROM users JOIN users_groups ON users.id = users_groups.id_user WHERE users_groups.id_group = ?', [groupId]);
+        // const [ users ] = await pool.query('SELECT * FROM users');
 
-    // const [membershipRows] = await pool.query('SELECT * FROM users_groups WHERE id_user = ?', [userId]);
+        // const [ users_groups ] = await pool.query('SELECT * FROM users_groups');
 
-    // const groupIds = membershipRows.map((row) => row.id_group);
+        // const [ groups ] = await pool.query('SELECT * FROM `groups`');
 
-    const [totalMembers] = await pool.query('SELECT id_group, COUNT(*) AS memberCount FROM users_groups GROUP BY id_group');
+        // const [groups_members] = await pool.query('SELECT * FROM users INNER JOIN users_groups ON users_groups.id_user = users.id INNER JOIN `groups` ON `groups`.id = users_groups.id_group ORDER BY users.total_points DESC');
+        // console.log(groups_members)
 
-    // const [groupRows] = await pool.query('SELECT * FROM `groups` WHERE id IN (?)', [groupIds]);
-    const [ users ] = await pool.query('SELECT * FROM users');
-    const [ users_groups ] = await pool.query('SELECT * FROM users_groups');
-    const [ groups ] = await pool.query('SELECT * FROM `groups`');
-    const [groups_members] = await pool.query('SELECT * FROM users INNER JOIN users_groups ON users_groups.id_user = users.id INNER JOIN `groups` ON `groups`.id = users_groups.id_group ORDER BY users.total_points DESC')
+        const [groups_members2] = await pool.query('SELECT users.fullname, users.total_points, `groups`.group_name, users_groups.id_user, users_groups.id_group FROM users INNER JOIN users_groups ON users_groups.id_user = users.id INNER JOIN `groups` ON `groups`.id = users_groups.id_group ORDER BY users.total_points DESC');
+        console.log(groups_members2)
 
-    console.log(groups_members)
+        const [totalMembers2] = await pool.query('SELECT `groups`.id, `groups`.group_name, COUNT(*) AS total_integrantes FROM users INNER JOIN users_groups ON users_groups.id_user = users.id INNER JOIN `groups` ON `groups`.id = users_groups.id_group GROUP BY `groups`.group_name ORDER BY total_integrantes DESC')
+        // console.log(totalMembers2)
+
+        const [groups_user2] = await pool.query('SELECT users.fullname, users.total_points, `groups`.group_name, users_groups.id_user, users_groups.id_group FROM users INNER JOIN users_groups ON users_groups.id_user = users.id INNER JOIN `groups` ON `groups`.id = users_groups.id_group WHERE users_groups.id_user = ? ORDER BY users.total_points DESC', [req.user.id]);
+        // console.log(groups_user2)
+
+        const [groups_user] = await pool.query('SELECT * FROM users INNER JOIN users_groups ON users_groups.id_user = users.id INNER JOIN `groups` ON `groups`.id = users_groups.id_group WHERE users_groups.id_user = ? ORDER BY users.total_points DESC', [req.user.id]);
+        // console.log(groups_user)    
+      
+
+        const joinLink = req.session.joinLink;
+        // delete req.session.joinLink; // elimina enlace después de obtenerlo
+
+
+    // console.log(groups_members);
     // res.json({
     //     users,
     //     users_groups,
@@ -196,12 +175,16 @@ router.get('/groups', isLoggedIn, async (req, res) => {
     //     totalMembers,
     //     groups_members
     // });
+
     res.render('groups', {
-        users,
-        users_groups,
-        groups, 
-        totalMembers,
-        groups_members
+        // users,
+        // users_groups,
+        // groups, 
+        totalMembers2,
+        groups_members2,
+        groups_user,
+        groups_user2,
+        joinLink
     });
   
     } catch (error) {
@@ -241,9 +224,12 @@ router.post('/create_group', isLoggedIn, async (req, res) => {
   
     // genera el enlace para unirse al grupo
     const joinLink = `https://tu-sitio.com/join/${groupId}`;
+    req.session.joinLink = joinLink;
+
   
     // enlace de unión 
-    res.json({ joinLink });
+    // res.json({ joinLink });
+    res.redirect('/groups');
   });
   
 
