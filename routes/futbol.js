@@ -135,20 +135,8 @@ router.post('/add_update', isLoggedIn, async (req, res) => {
 });  
 
 router.get('/groups', isLoggedIn, async (req, res) => {
-
-    const userId = req.user.id; 
-    const groupId = req.params.groupId;
   
     try {
-
-        // const [ users ] = await pool.query('SELECT * FROM users');
-
-        // const [ users_groups ] = await pool.query('SELECT * FROM users_groups');
-
-        // const [ groups ] = await pool.query('SELECT * FROM `groups`');
-
-        // const [groups_members] = await pool.query('SELECT * FROM users INNER JOIN users_groups ON users_groups.id_user = users.id INNER JOIN `groups` ON `groups`.id = users_groups.id_group ORDER BY users.total_points DESC');
-        // console.log(groups_members)
 
         const [groups_members2] = await pool.query('SELECT users.fullname, users.total_points, `groups`.group_name, `groups`.invitation, users_groups.id_user, users_groups.id_group FROM users INNER JOIN users_groups ON users_groups.id_user = users.id INNER JOIN `groups` ON `groups`.id = users_groups.id_group ORDER BY users.total_points DESC');
         // console.log(groups_members2)
@@ -157,32 +145,22 @@ router.get('/groups', isLoggedIn, async (req, res) => {
         // console.log(totalMembers2)
 
         const [groups_user2] = await pool.query('SELECT users.fullname, users.total_points, `groups`.group_name, `groups`.invitation, users_groups.id_user, users_groups.id_group FROM users INNER JOIN users_groups ON users_groups.id_user = users.id INNER JOIN `groups` ON `groups`.id = users_groups.id_group WHERE users_groups.id_user = ? ORDER BY users.total_points DESC', [req.user.id]);
-        // console.log(groups_user2)
-
-        const [groups_user] = await pool.query('SELECT * FROM users INNER JOIN users_groups ON users_groups.id_user = users.id INNER JOIN `groups` ON `groups`.id = users_groups.id_group WHERE users_groups.id_user = ? ORDER BY users.total_points DESC', [req.user.id]);
-        // console.log(groups_user)    
-      
+        // console.log(groups_user2)      
 
         const joinLink = req.session.joinLink;
         // delete req.session.joinLink; // elimina enlace después de obtenerlo
 
 
     // console.log(groups_members);
-    // res.json({
-    //     users,
-    //     users_groups,
-    //     groups,
-    //     totalMembers,
-    //     groups_members
+    // res.json({ 
+    //      groups_user2,
+    //     totalMembers2,
+    //     groups_members2
     // });
 
     res.render('groups', {
-        // users,
-        // users_groups,
-        // groups, 
         totalMembers2,
         groups_members2,
-        groups_user,
         groups_user2,
         joinLink
     });
@@ -231,7 +209,48 @@ router.post('/create_group', isLoggedIn, async (req, res) => {
     res.redirect('/groups');
   });
   
+  router.get('/join/:groupId', isLoggedIn, async (req, res) => {
+    const groupId = req.params.groupId;
+    const userId = req.user.id;
+  
+    try {
+        // comprueba si el usuario es miembro del grupo
+        const [existingMembership] = await pool.query('SELECT * FROM users_groups WHERE id_user = ? AND id_group = ?', [userId, groupId]);
+    
+        if (existingMembership.length > 0) {
+            req.flash('info', 'Ya eres miembro de este grupo');
+            res.redirect('/groups');
+        } else {
+            const membership = {
+            id_user: userId,
+            id_group: groupId
+            };
+            await pool.query('INSERT INTO users_groups SET ?', [membership]);
+    
+            req.flash('success', 'Te has unido al grupo exitosamente');
+            res.redirect('/groups');
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error al unirse al grupo');
+    }
+});
 
+router.get('/get_invitation', async (req, res) => {
+    const groupId = req.query.id_group;
+  
+    try {
+        const [result] = await pool.query('SELECT invitation FROM `groups` WHERE id = ?', [groupId]);
+        const invitation = result[0].invitation;
+        // console.log(invitation);
+    
+        // envio respuesta
+        res.json({ invitation });
+      } catch (error) {
+        console.log('Error al obtener la invitación:', error);
+        res.status(500).json({ error: 'Error al obtener la invitación' });
+      }
+  });
   
 
 module.exports = router;

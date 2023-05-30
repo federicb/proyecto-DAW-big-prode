@@ -28,7 +28,7 @@
                     <a class="group__name" href="#" data-groupid="<%= groups_user2[j].id_group %>"><%= groups_user2[j].group_name %></a>
                     <span>Miembros: 
                         <% for (let x = 0; x < totalMembers2.length; x++) { %>
-                            <% if (totalMembers2[x].id === groups_user[j].id_group) { %>
+                            <% if (totalMembers2[x].id === groups_user2[j].id_group) { %>
                                 <%= totalMembers2[x].total_integrantes %>
                             <% } %>
                         <% } %>
@@ -39,9 +39,11 @@
             
         </div>
         <div class="groups__info" >
+            
             <div class="group__link">
-                <p class="link"> <%= joinLink %> </p>
+                <p class="link">  </p>
             </div>
+          
             <table class="group__members">
                 <thead>
                     <tr>
@@ -50,13 +52,13 @@
                         <th class="numbers">Puntos</th>
                     </tr>
                 </thead>
-                <tbody id="groupMembersTableBody">
+                <tbody>
 
                     <% for (let i = 0; i < groups_user2.length; i++) { %>
                         <% const group = groups_user2[i]; %>
-                        <% console.log(group) %>
+                       
                         <% const matchingMembers = groups_members2.filter(member => member.id_group === group.id_group); %>
-                        <% console.log(matchingMembers) %>
+                        
                         <% for (let j = 0; j < matchingMembers.length; j++) { %>
                             <% const member = matchingMembers[j]; %>
                             <tr class="group-member-row" data-groupid="<%= group.id_group %>">
@@ -74,31 +76,7 @@
     <!-- FOOTER-->
     <%- include('./partials/footer.ejs') %>
 
-    <script>
-        const groupLinks = document.querySelectorAll('.group__name');
-        const groupInfo = document.querySelector('.groups__info');
-
-        groupLinks.forEach(link => {
-          link.addEventListener('click', () => {
-            const groupId = link.getAttribute('data-groupid');
-            
-            // oculta filas
-            const groupMemberRows = document.querySelectorAll('.group-member-row');
-            groupMemberRows.forEach(row => {
-              row.style.display = 'none';
-            });
-            
-            // muestra solo filas de miembros del grupo seleccionado
-            const matchingMemberRows = document.querySelectorAll(`.group-member-row[data-groupid="${groupId}"]`);
-            matchingMemberRows.forEach(row => {
-              row.style.display = 'flex';
-            });
-
-            // muestra el grupo_info
-            groupInfo.style.display = 'flex';
-          });
-        });
-    </script>
+    <script src="/scripts/groups.js"></script>
 
 </body>
 </html>
