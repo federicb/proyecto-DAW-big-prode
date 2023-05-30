@@ -74,6 +74,6 @@ app.use(function(err, req, res, next) {
 });
 
 //server
-app.listen(4000, () => {
-    console.log("Server on port 3001");
+app.listen(3000, () => {
+    console.log("Server on port 3000");
 });
