@@ -4,6 +4,8 @@
   align-items: center;
   flex-direction: column;
   width: 100%;
+  height: calc(80vh - 7rem - 23px);
+  margin: 2rem 0;
 }
 .main .groups {
   display: flex;
