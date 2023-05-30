@@ -208,6 +208,16 @@ router.post('/create_group', isLoggedIn, async (req, res) => {
     // res.json({ joinLink });
     res.redirect('/groups');
   });
+
+router.get('/leave_group/:id', isLoggedIn, async (req, res) => {
+    const id_group  = req.params.id;
+    const id_user = req.user.id;
+
+    await pool.query('DELETE FROM users_groups WHERE id_user = ? AND id_group = ?', [id_user, id_group])
+
+    req.flash('success', 'Link deleted successfully')
+    res.redirect('/groups')
+});
   
   router.get('/join/:groupId', isLoggedIn, async (req, res) => {
     const groupId = req.params.groupId;
