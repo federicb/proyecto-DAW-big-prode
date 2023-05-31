@@ -82,8 +82,8 @@ document.querySelector('form').addEventListener('submit', function(event) {
     })
     .then(function(response) {
         if (response.ok) {
-            return response.ok;
             console.log('Datos recibidos correctamente');
+            return response.json();
         } else {
             throw new Error('Error en la solicitud');
         }

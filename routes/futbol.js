@@ -1,6 +1,5 @@
 const {Router} = require('express');
 const router = Router();
-const fetch = require('node-fetch');
 const { isLoggedIn } = require('../config/auth');
 const calculate = require('../config/calcs');
 const pool = require('../connection');
@@ -9,7 +8,8 @@ const { v4: uuidv4 } = require('uuid');
 router.get('/positions', async (req, res) =>{
     
     try {
-        const response = await fetch("https://v3.football.api-sports.io/standings?league=128&season=2023", {
+        const fetch = await import('node-fetch');
+        const response = await fetch.default("https://v3.football.api-sports.io/standings?league=128&season=2023", {
             method: "GET",
             headers: {
                 "x-rapidapi-host": "v3.football.api-sports.io",
@@ -32,7 +32,8 @@ router.get('/positions', async (req, res) =>{
 router.get('/forecasts', isLoggedIn, async (req, res) =>{
     
     try {
-        const response = await fetch("https://v3.football.api-sports.io/fixtures?league=128&season=2023", {
+        const fetch = await import('node-fetch');
+        const response = await fetch.default("https://v3.football.api-sports.io/fixtures?league=128&season=2023", {
             method: "GET",
             headers: {
                 "x-rapidapi-host": "v3.football.api-sports.io",
