@@ -13,7 +13,8 @@
 .main{
     @include flex(flex, center, center, column);
     width: 100%;
-    // height: calc(100vh - 7rem - 23px);
+    height: calc(85vh - 7rem - 23px);
+    min-height: 85vh;
     margin: 2rem 0;
     .groups{
         // background: pink;
