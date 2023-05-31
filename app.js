@@ -3,7 +3,6 @@ dotenv.config()
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
-const fetch = require('node-fetch');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 // const {database} = require('./keys');
@@ -31,7 +30,7 @@ app.use(session({
         maxAge: 600000, // 10 minutos en milisegundos
       }
 }));
-app.use(fetch());
+
 app.use(flash());
 app.use(morgan('dev'));
 app.use(cookieParser());
