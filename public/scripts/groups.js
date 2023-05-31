@@ -9,8 +9,8 @@ groupLinks.forEach(link => {
         const groupId = link.getAttribute('data-groupid');
 
         try {
-            const fetch = await import('node-fetch');
-            const response = await fetch.default(`/get_invitation?id_group=${groupId}`);
+            // const fetch = await import('node-fetch');
+            const response = await fetch(`/get_invitation?id_group=${groupId}`);
             const data = await response.json();
             
             // actualiza contenido .link

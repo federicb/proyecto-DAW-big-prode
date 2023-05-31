@@ -25,7 +25,7 @@
         .groups__card{
             // background: gold;
             @include flex(flex, center, center, column);
-            width: 10rem;
+            width: 14rem;
             padding: 1rem;
             margin: 1rem;
             border-radius: 3px;
@@ -40,7 +40,7 @@
             }
             .group__name{
                 color: #252323;
-                font-size: 30px;
+                font-size: 21px;
             }
             span{
                 font-weight: 400;

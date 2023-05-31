@@ -22,7 +22,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 10rem;
+  width: 14rem;
   padding: 1rem;
   margin: 1rem;
   border-radius: 3px;
@@ -37,7 +37,7 @@
 }
 .main .groups .groups__card .group__name {
   color: #252323;
-  font-size: 30px;
+  font-size: 21px;
 }
 .main .groups .groups__card span {
   font-weight: 400;

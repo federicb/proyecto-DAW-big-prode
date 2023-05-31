@@ -83,7 +83,7 @@ document.querySelector('form').addEventListener('submit', function(event) {
     .then(function(response) {
         if (response.ok) {
             console.log('Datos recibidos correctamente');
-            return response.json();
+            return response.ok;
         } else {
             throw new Error('Error en la solicitud');
         }
@@ -92,7 +92,8 @@ document.querySelector('form').addEventListener('submit', function(event) {
         // Respuesta del servidor
         console.log(data);
         // Realiza redireccionamiento en el lado del servidor
-        window.location.href = req.get('referer');
+        // window.location.href = req.get('referer');
+        window.location.href = '/profile';
     })
     .catch(function(error) {
 
