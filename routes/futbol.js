@@ -108,7 +108,7 @@ router.post('/add_update', isLoggedIn, async (req, res) => {
                 f_goal_away,
                 id_round,
                 id_user: req.user.id,
-                totalPoints
+                // totalPoints
             };
             // console.log(newForecast);
 

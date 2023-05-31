@@ -7,7 +7,7 @@ CREATE TABLE users (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     email VARCHAR(120) NOT NULL,
     password VARCHAR(60) NOT NULL,
-    fullname VARCHAR(100) NOT NULL
+    fullname VARCHAR(100) NOT NULL,
 );
 
 ALTER TABLE users ADD COLUMN total_points INT DEFAULT 0;
@@ -19,13 +19,10 @@ CREATE TABLE forecasts (
     id_fixture INT NOT NULL,
     f_goal_local INT,
     f_goal_away INT,
-    pts INT,
     id_user INT UNSIGNED,
     CONSTRAINT fk_user FOREIGN KEY(id_user) REFERENCES users(id),
     CONSTRAINT UC_forecasts UNIQUE (id, id_user)
 );
-
-ALTER TABLE forecasts DROP COLUMN pts;
 
 -- GROUPS TABLE
 CREATE TABLE `groups` (
