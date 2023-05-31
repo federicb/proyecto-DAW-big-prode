@@ -36,6 +36,9 @@
             table{
                 @include flex(flex, center, center, column);
                 font-weight: 300;
+                @include media(450px){
+                    width: 110%;
+                }
                 thead{             
                     background: #000000;
                     border-radius: 3px 3px 0 0;
@@ -58,6 +61,9 @@
                             width: 15rem;
                             @include media(540px){
                                 width: 4rem;
+                            }                         
+                            @include media(450px){
+                                width: 20.5rem;
                             }                         
                         }
                     }
@@ -104,13 +110,23 @@
                             }
                             .teams__logo{
                                 @include flex(flex, space-between, center, row);
-                                span{
-                                    width: 80%;
-                                    @include media(){
-                                        width: 60%;
+                                .club{
+                                    text-align: center;
+                                    width: 100%;
+                                    @include media(450px){
+                                        white-space: nowrap; 
+                                        width: 75px; 
+                                        overflow: hidden;
+                                        text-overflow: ellipsis; 
                                     }
-                                    @include media(540px){
-                                        width: 60%;
+                                    span{
+                                        width: 80%;
+                                        @include media(){
+                                            width: 60%;
+                                        }
+                                        @include media(540px){
+                                            width: 60%;
+                                        }
                                     }
                                 }
                                 img{

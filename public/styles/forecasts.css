@@ -39,6 +39,11 @@
   flex-direction: column;
   font-weight: 300;
 }
+@media only screen and (max-width: 450px) {
+  .container #form .fixture table {
+    width: 110%;
+  }
+}
 .container #form .fixture table thead {
   background: #000000;
   border-radius: 3px 3px 0 0;
@@ -67,6 +72,11 @@
 @media only screen and (max-width: 540px) {
   .container #form .fixture table thead tr .teams {
     width: 4rem;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .container #form .fixture table thead tr .teams {
+    width: 20.5rem;
   }
 }
 .container #form .fixture table tbody {
@@ -129,16 +139,28 @@
   align-items: center;
   flex-direction: row;
 }
-.container #form .fixture table tbody tr .teams .teams__logo span {
+.container #form .fixture table tbody tr .teams .teams__logo .club {
+  text-align: center;
+  width: 100%;
+}
+@media only screen and (max-width: 450px) {
+  .container #form .fixture table tbody tr .teams .teams__logo .club {
+    white-space: nowrap;
+    width: 75px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+.container #form .fixture table tbody tr .teams .teams__logo .club span {
   width: 80%;
 }
 @media only screen and (max-width: 780px) {
-  .container #form .fixture table tbody tr .teams .teams__logo span {
+  .container #form .fixture table tbody tr .teams .teams__logo .club span {
     width: 60%;
   }
 }
 @media only screen and (max-width: 540px) {
-  .container #form .fixture table tbody tr .teams .teams__logo span {
+  .container #form .fixture table tbody tr .teams .teams__logo .club span {
     width: 60%;
   }
 }

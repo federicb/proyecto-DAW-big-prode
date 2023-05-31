@@ -68,6 +68,9 @@
                 @include flex(flex, center, center, row);
                 background: #000000;
                 border-radius: 3px 3px 0 0;
+                @include media(450px){
+                    width: 100%;
+                }
                 .head{
                     color: #EFEFEF;
                     padding: 9px;
@@ -78,11 +81,14 @@
                     }
                     @include media(450px){
                         padding: 2px;
-                        width: 20px;
+                        width: 26px;
                     }
                 }
                 .head__logo{
-                    width: 17px
+                    width: 17px;
+                    @include media(450px){
+                        width: 13px;
+                    }
                 }
                 .head__name{
                     width: 17rem;
@@ -95,13 +101,16 @@
                 .head__dif{
                     width: 5rem;
                     @include media(450px){
-                        width: 4rem;
+                        width: 1.5rem;
                     }
                 }                
             }
             .standings__rank{
                 @include flex(flex, center, center, row);
                 border-top: 1px solid #d2d1d1;
+                @include media(450px){
+                    width: 100%;
+                }
                 span{
                     padding: 9px;
                     width: 3rem;
@@ -110,7 +119,7 @@
                         width: 2.5rem;
                     }
                     @include media(450px){
-                        width: 20px;
+                        width: 24px;
                     }
                 }
                 .rank__name{
@@ -118,7 +127,7 @@
                     padding-left: 1rem;
                     text-align: start;
                     @include media(450px){
-                        width: 7rem;
+                        width: 6.4rem;
                     }
                 }
                 img{

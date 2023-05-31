@@ -94,6 +94,11 @@
   background: #000000;
   border-radius: 3px 3px 0 0;
 }
+@media only screen and (max-width: 450px) {
+  .main__positions .container .standings .standings__head {
+    width: 100%;
+  }
+}
 .main__positions .container .standings .standings__head .head {
   color: #EFEFEF;
   padding: 9px;
@@ -108,11 +113,16 @@
 @media only screen and (max-width: 450px) {
   .main__positions .container .standings .standings__head .head {
     padding: 2px;
-    width: 20px;
+    width: 26px;
   }
 }
 .main__positions .container .standings .standings__head .head__logo {
   width: 17px;
+}
+@media only screen and (max-width: 450px) {
+  .main__positions .container .standings .standings__head .head__logo {
+    width: 13px;
+  }
 }
 .main__positions .container .standings .standings__head .head__name {
   width: 17rem;
@@ -129,7 +139,7 @@
 }
 @media only screen and (max-width: 450px) {
   .main__positions .container .standings .standings__head .head__dif {
-    width: 4rem;
+    width: 1.5rem;
   }
 }
 .main__positions .container .standings .standings__rank {
@@ -138,6 +148,11 @@
   align-items: center;
   flex-direction: row;
   border-top: 1px solid #d2d1d1;
+}
+@media only screen and (max-width: 450px) {
+  .main__positions .container .standings .standings__rank {
+    width: 100%;
+  }
 }
 .main__positions .container .standings .standings__rank span {
   padding: 9px;
@@ -151,7 +166,7 @@
 }
 @media only screen and (max-width: 450px) {
   .main__positions .container .standings .standings__rank span {
-    width: 20px;
+    width: 24px;
   }
 }
 .main__positions .container .standings .standings__rank .rank__name {
@@ -161,7 +176,7 @@
 }
 @media only screen and (max-width: 450px) {
   .main__positions .container .standings .standings__rank .rank__name {
-    width: 7rem;
+    width: 6.4rem;
   }
 }
 .main__positions .container .standings .standings__rank img {

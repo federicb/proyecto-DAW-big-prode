@@ -59,7 +59,9 @@
                                     <td class="teams">
                                         <div class="teams__logo">
                                             <img style="width: 25px;" src="<%= matches[i].teams.home.logo %>" alt="">
-                                            <span><%= matches[i].teams.home.name %></span>
+                                            <div class="club">
+                                                <span><%= matches[i].teams.home.name %></span>
+                                            </div>
                                         </div>
                                     </td>
 
@@ -99,7 +101,9 @@
 
                                     <td class="teams">
                                         <div class="teams__logo">
-                                            <span><%= matches[i].teams.away.name %></span>
+                                            <div class="club">
+                                                <span><%= matches[i].teams.away.name %></span>
+                                            </div>
                                             <img style="width: 25px;" src="<%= matches[i].teams.away.logo %>" alt="">
                                         </div>
                                     </td>
