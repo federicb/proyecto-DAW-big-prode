@@ -1,3 +1,5 @@
+import fetch from 'node-fetch';
+
 document.addEventListener('DOMContentLoaded', function() {
 
     const roundSelect = document.getElementById('roundSelect');

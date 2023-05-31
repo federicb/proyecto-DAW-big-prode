@@ -1,3 +1,5 @@
+import fetch from 'node-fetch';
+
 const groupLinks = document.querySelectorAll('.group__name');
 const groupInfo = document.querySelector('.groups__info');
 const invitationLink = document.querySelector('.group__link .link');

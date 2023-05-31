@@ -1,5 +1,6 @@
 const {Router} = require('express');
 const router = Router();
+import fetch from 'node-fetch';
 const { isLoggedIn } = require('../config/auth');
 const calculate = require('../config/calcs');
 const pool = require('../connection');
