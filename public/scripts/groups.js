@@ -5,16 +5,18 @@ const invitationLink = document.querySelector('.group__link .link');
 
 
 groupLinks.forEach(link => {
-    link.addEventListener('click', async () => {
+    link.addEventListener('click', async (event) => {
+        event.preventDefault();
         const groupId = link.getAttribute('data-groupid');
 
         try {
-            // const fetch = await import('node-fetch');
+           
             const response = await fetch(`/get_invitation?id_group=${groupId}`);
             const data = await response.json();
             
             // actualiza contenido .link
             invitationLink.textContent = data.invitation || 'Invitación no disponible';
+
             } catch (error) {
             console.log('Error al obtener la invitación:', error);
             invitationLink.textContent = 'Error al obtener la invitación';
@@ -34,5 +36,13 @@ groupLinks.forEach(link => {
 
         // muestra el grupo_info
         groupInfo.style.display = 'flex';
+
+        // cambia fondo de .groups__card
+        const groupCards = document.querySelectorAll('.groups__card');
+        groupCards.forEach(card => {
+            card.style.backgroundColor = '';
+        });
+        const currentCard = link.closest('.groups__card');
+        currentCard.style.backgroundColor = '#cef5ce';
     });
 });
