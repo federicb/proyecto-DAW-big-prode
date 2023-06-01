@@ -13,7 +13,7 @@
 .main{
     @include flex(flex, center, center, column);
     width: 100%;
-    height: calc(85vh - 7rem - 23px);
+    // height: calc(85vh - 7rem - 23px);
     min-height: 85vh;
     margin: 2rem 0;
     .groups{
@@ -73,7 +73,6 @@
         }
     }
     .groups__info{
-        // background: rosybrown;
         @include flex(flex, center, center, column);
         width: 100%;
         padding: 1rem;
@@ -88,6 +87,11 @@
             @include media(){
                 width: 90%;
             }
+        }
+        .group__link--advert{
+            text-align: center;
+            background: #ffea77;
+            margin-top: 7px;
         }
         .group__members{
             // background: gold;
