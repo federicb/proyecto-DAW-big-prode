@@ -54,8 +54,8 @@ router.post('/create_group', isLoggedIn, async (req, res) => {
     const groupId = uuidv4();
 
     // genera el enlace para unirse al grupo
-    const joinLink = `http://localhost:3000/join/${groupId}`;
-    // const joinLink = `http://proyecto-daw-big-prode.onrender.com/join/${groupId}`;
+    // const joinLink = `http://localhost:3000/join/${groupId}`;
+    const joinLink = `http://proyecto-daw-big-prode.onrender.com/join/${groupId}`;
     req.session.joinLink = joinLink;
   
     const newGroup = {
