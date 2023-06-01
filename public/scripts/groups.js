@@ -37,12 +37,5 @@ groupLinks.forEach(link => {
         // muestra el grupo_info
         groupInfo.style.display = 'flex';
 
-        // cambia fondo de .groups__card
-        const groupCards = document.querySelectorAll('.groups__card');
-        groupCards.forEach(card => {
-            card.style.backgroundColor = '';
-        });
-        const currentCard = link.closest('.groups__card');
-        currentCard.style.backgroundColor = '#cef5ce';
     });
 });
