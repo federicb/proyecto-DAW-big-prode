@@ -17,6 +17,8 @@
         font-size: 40px;
     }
     #form{
+        max-width: 100%;
+        overflow-x: scroll;
         @include flex(flex, center, center, column);
         #roundSelect{
             width: 30%;
